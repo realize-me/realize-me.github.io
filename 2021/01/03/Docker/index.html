@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
     <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-alpha.11'>
   <meta name="generator" content="Hexo 6.1.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2021/01/08/2021-01-08-docker匿名挂载和具名挂载/"/>
+  <link rel="canonical" href="https://realize-me.github.io/2021/01/03/docker/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -17,34 +17,35 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta content="Hexo" name="application-name">
-  <meta content="Hexo" name="apple-mobile-web-app-title">
+  <meta content="小泽のブログ" name="application-name">
+  <meta content="小泽のブログ" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1649088499353" as="style">
+  <link rel="preload" href="/css/style.css?time=1649088963337" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>Docker匿名挂载和具名挂载 - Hexo</title>
+  <title>Docker常用命令 - 小泽のブログ</title>
   <meta name="keywords" content="Docker,null">
-  <meta name="description" content="总结： -v 容器内路径                         #匿名挂载 -v 卷名:容器内路径                #具名挂载 -v &#x2F;宿主机路径:容器内路径    #指定路径挂载  使用数据卷挂载时通常要指定主机目录和容器内目录。 而匿名挂载是不指定主机目录，让Docker在主机生成一个目录用来完成主机目录和容器目录之间的挂载。 匿名挂载示例：-v 后面只用写容">
+  <meta name="description" content="Docker和虚拟机的不同：  传统虚拟机，虚拟出一套硬件，在硬件之上运行一个完整的操作系统，然后在操作系统上安装和运行软件。 容器内的应用直接运行在宿主机的内核上，容器没有自己的内核，也没有虚拟出硬件。 每个容器之间是相互隔离的，每个容器都有一个属于自己的文件系统，互不影响。  Docker镜像命令查看镜像使用方式：  docker images [option] [repository[:TA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker匿名挂载和具名挂载">
-<meta property="og:url" content="http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="总结： -v 容器内路径                         #匿名挂载 -v 卷名:容器内路径                #具名挂载 -v &#x2F;宿主机路径:容器内路径    #指定路径挂载  使用数据卷挂载时通常要指定主机目录和容器内目录。 而匿名挂载是不指定主机目录，让Docker在主机生成一个目录用来完成主机目录和容器目录之间的挂载。 匿名挂载示例：-v 后面只用写容">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-01-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-04T06:21:27.545Z">
-<meta property="article:author" content="John Doe">
+<meta property="og:title" content="Docker常用命令">
+<meta property="og:url" content="https://realize-me.github.io/2021/01/03/Docker/index.html">
+<meta property="og:site_name" content="小泽のブログ">
+<meta property="og:description" content="Docker和虚拟机的不同：  传统虚拟机，虚拟出一套硬件，在硬件之上运行一个完整的操作系统，然后在操作系统上安装和运行软件。 容器内的应用直接运行在宿主机的内核上，容器没有自己的内核，也没有虚拟出硬件。 每个容器之间是相互隔离的，每个容器都有一个属于自己的文件系统，互不影响。  Docker镜像命令查看镜像使用方式：  docker images [option] [repository[:TA">
+<meta property="og:locale">
+<meta property="og:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2021-01-03T08:13:14.000Z">
+<meta property="article:modified_time" content="2022-04-04T06:21:27.543Z">
+<meta property="article:author" content="realxz">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta name="twitter:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
   <!-- import meta -->
   <!-- link -->
+    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
   <!-- import link -->
   <style>
     /* 首屏样式 */
@@ -1660,8 +1661,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1649088499353" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088499353"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1649088963337" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088963337"></noscript>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -1732,9 +1733,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1649088499353","sites":"/js/plugins/sites.js?time=1649088499353","friends":"/js/plugins/friends.js?time=1649088499353","parallax":"/js/plugins/parallax.js?time=1649088499353","rightMenu":"/js/plugins/rightMenu.js?time=1649088499353","contributors":"/js/plugins/contributors.js?time=1649088499353","message":"/js/thirdparty/message.js?time=1649088499353","search":"/js/search/hexo.js?time=1649088499353"},"css":{"style":"/css/style.css?time=1649088499353","message":"/css/message.css?time=1649088499353"}},
+    cdn: {"js":{"app":"/js/app.js?time=1649088963337","sites":"/js/plugins/sites.js?time=1649088963337","friends":"/js/plugins/friends.js?time=1649088963337","parallax":"/js/plugins/parallax.js?time=1649088963337","rightMenu":"/js/plugins/rightMenu.js?time=1649088963337","contributors":"/js/plugins/contributors.js?time=1649088963337","message":"/js/thirdparty/message.js?time=1649088963337","search":"/js/search/hexo.js?time=1649088963337"},"css":{"style":"/css/style.css?time=1649088963337","message":"/css/message.css?time=1649088963337"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1649088499353),
+    lastupdate: new Date(1649088963337),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2473,12 +2474,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/">
+  <link itemprop="mainEntityOfPage" href="https://realize-me.github.io/2021/01/03/Docker/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
     <meta itemprop="description" content="">
   </span>
   
@@ -2494,7 +2495,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        Docker匿名挂载和具名挂载
+        Docker常用命令
       </h1>
       <div class='new-meta-box'>
         
@@ -2525,10 +2526,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-01-08T00:00:00+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-01-03T16:13:14+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jan 8, 2021</p>
+    <p>发布于：Jan 3, 2021</p>
   </a>
 </div>
 
@@ -2549,30 +2550,312 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><div class="story post-story"><blockquote>
-<p>-v 容器内路径                         #匿名挂载</p>
-<p>-v 卷名:容器内路径                #具名挂载</p>
-<p>-v &#x2F;宿主机路径:容器内路径    #指定路径挂载</p>
+    <p>Docker和虚拟机的不同：</p>
+<ul>
+<li>传统虚拟机，虚拟出一套硬件，在硬件之上运行一个完整的操作系统，然后在操作系统上安装和运行软件。</li>
+<li>容器内的应用直接运行在宿主机的内核上，容器没有自己的内核，也没有虚拟出硬件。</li>
+<li>每个容器之间是相互隔离的，每个容器都有一个属于自己的文件系统，互不影响。</li>
+</ul>
+<h2 id="Docker镜像命令"><a href="#Docker镜像命令" class="headerlink" title="Docker镜像命令"></a>Docker镜像命令</h2><div class="story post-story"><h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><p>使用方式：</p>
+<blockquote>
+<p>docker images [option] [repository[:TAG]]</p>
 </blockquote>
-<p>使用数据卷挂载时通常要指定主机目录和容器内目录。</p>
-<p>而匿名挂载是不指定主机目录，让Docker在主机生成一个目录用来完成主机目录和容器目录之间的挂载。</p>
-<h4 id="匿名挂载示例："><a href="#匿名挂载示例：" class="headerlink" title="匿名挂载示例："></a>匿名挂载示例：</h4><p>-v 后面<font color='red'>只用写容器内的目录</font></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d -P --name nginx01 -v /etc/nginx nginx</span></span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker images</span></span><br><span class="line">REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">hello-world                      latest              bf756fb1ae65        12 months ago       13.3kB</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解释</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">只显示镜像ID</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker images -q</span></span><br><span class="line">7c3ce33e4a1f</span><br><span class="line">ec3789272a09</span><br><span class="line">698ab9017c5b</span><br><span class="line">19d9cb152dda</span><br></pre></td></tr></table></figure>
 
-<h4 id="查看已挂载的卷："><a href="#查看已挂载的卷：" class="headerlink" title="查看已挂载的卷："></a>查看已挂载的卷：</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker volume <span class="built_in">ls</span></span></span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     b3b5c49a7b70d051d7e6016315802e0e76e2fcf51c6f063154e6003ea4bacc64</span><br><span class="line">local     c2e4e840333c3822a97c72237aa193a5c86117814d3d650b784a4ebde775dafc</span><br><span class="line">local     cout-test-vol</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="具名挂载示例："><a href="#具名挂载示例：" class="headerlink" title="具名挂载示例："></a>具名挂载示例：</h4><p>-v后面的格式是<font color='red'>主机卷名称:容器内目录 </font></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d -P --name nginx02 -v test-nginx:/etc/nginx nginx</span></span><br></pre></td></tr></table></figure>
+<p>​<br>​       </p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REPOSITORY</td>
+<td>镜像的仓库源</td>
+</tr>
+<tr>
+<td>TAG</td>
+<td>镜像的标签</td>
+</tr>
+<tr>
+<td>IMAGE ID</td>
+<td>镜像ID</td>
+</tr>
+<tr>
+<td>CREATED</td>
+<td>镜像创建时间</td>
+</tr>
+<tr>
+<td>SIZE</td>
+<td>镜像的大小</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Option选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–all , -a</td>
+<td># 显示所有镜像 (default hides intermediate images)</td>
+</tr>
+<tr>
+<td>–digests</td>
+<td># Show digests</td>
+</tr>
+<tr>
+<td>–filter , -f</td>
+<td># Filter output based on conditions provided</td>
+</tr>
+<tr>
+<td>–format</td>
+<td># Pretty-print images using a Go template</td>
+</tr>
+<tr>
+<td>–no-trunc</td>
+<td>#Don’t truncate output</td>
+</tr>
+<tr>
+<td>–quiet , -q</td>
+<td># Only show image IDs</td>
+</tr>
+</tbody></table>
+<h3 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h3><p>使用方式：</p>
+<blockquote>
+<p>docker search [OPTION] TERM</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker search mysql</span></span><br><span class="line">NAME                              DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED</span><br><span class="line">mysql                             MySQL is a widely used, open-source relation…   10339               [OK]                </span><br><span class="line">mariadb                           MariaDB is a community-developed fork of MyS…   3832                [OK]                </span><br><span class="line">mysql/mysql-server                Optimized MySQL Server Docker images. Create…   757                                     [OK]</span><br><span class="line">....</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="再次查看已挂载的卷："><a href="#再次查看已挂载的卷：" class="headerlink" title="再次查看已挂载的卷："></a>再次查看已挂载的卷：</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker volume <span class="built_in">ls</span></span> </span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     b3b5c49a7b70d051d7e6016315802e0e76e2fcf51c6f063154e6003ea4bacc64</span><br><span class="line">local     c2e4e840333c3822a97c72237aa193a5c86117814d3d650b784a4ebde775dafc</span><br><span class="line">local     cout-test-vol</span><br><span class="line">local     test-nginx</span><br></pre></td></tr></table></figure>
 
-<p>多出一个名为<code>test-nginx </code>的卷。</p>
-<p>查看这个卷的详细信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker volume inspect test-nginx</span></span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2021-01-08T22:01:26+08:00&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: null,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/test-nginx/_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;test-nginx&quot;,</span><br><span class="line">        &quot;Options&quot;: null,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<p>可见，Docker将主机上生成了<code>/var/lib/docker/volumes/test-nginx/_data</code>目录，并将该目录与容器内指定目录进行了双向绑定。</p>
-</div><h2 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h2><div class="story post-story"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过 -v 容器内路径: ro rw 改变读写权限</span></span><br><span class="line">ro read only	# 只读</span><br><span class="line">rw read write	# 可读可写</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">一旦设置了容器权限，容器对我们挂在出来的内容就有限定了</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d -P --name nginx02 -v test-nginx:/etc/nginx:ro nginx</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d -P --name nginx02 -v test-nginx:/etc/nginx:rw nginx</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">ro 只要看到ro就说明这个路径只能通过宿主机来操作，而容器内部无法操作</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">搜索时添加过滤条件为STARS不小于3000</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker search mysql --filter=STARS=3000</span></span><br><span class="line">NAME                DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED</span><br><span class="line">mysql               MySQL is a widely used, open-source relation…   10339               [OK]                </span><br><span class="line">mariadb             MariaDB is a community-developed fork of MyS…   3832                [OK]         </span><br></pre></td></tr></table></figure>
 
+
+
+<h3 id="查看某个命令的可选项"><a href="#查看某个命令的可选项" class="headerlink" title="查看某个命令的可选项"></a>查看某个命令的可选项</h3><p>使用方式：</p>
+<blockquote>
+<p>docker [命令名称] –help</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker images --<span class="built_in">help</span></span></span><br><span class="line"></span><br><span class="line">Usage:	docker images [OPTIONS] [REPOSITORY[:TAG]]</span><br><span class="line"></span><br><span class="line">List images</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -a, --all             Show all images (default hides intermediate images)</span><br><span class="line">      --digests         Show digests</span><br><span class="line">  -f, --filter filter   Filter output based on conditions provided</span><br><span class="line">      --format string   Pretty-print images using a Go template</span><br><span class="line">      --no-trunc        Don&#x27;t truncate output</span><br><span class="line">  -q, --quiet           Only show numeric IDs</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><p>使用方式：</p>
+<blockquote>
+<p>docker pull [OPTION] NAME[:TAG|@DIGEST] </p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull mysql</span></span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/mysql</span><br><span class="line">6ec7b7d162b2: Pull complete  # 分层下载</span><br><span class="line">fedd960d3481: Pull complete </span><br><span class="line">7ab947313861: Pull complete </span><br><span class="line">64f92f19e638: Pull complete </span><br><span class="line">3e80b17bff96: Pull complete </span><br><span class="line">014e976799f9: Pull complete </span><br><span class="line">59ae84fee1b3: Pull complete </span><br><span class="line">ffe10de703ea: Pull complete </span><br><span class="line">657af6d90c83: Pull complete </span><br><span class="line">98bfb480322c: Pull complete </span><br><span class="line">6aa3859c4789: Pull complete </span><br><span class="line">1ed875d851ef: Pull complete </span><br><span class="line">Digest: sha256:78800e6d3f1b230e35275145e657b82c3fb02a27b2d8e76aac2f5e90c1c30873 # 签名</span><br><span class="line">Status: Downloaded newer image for mysql:latest</span><br><span class="line">docker.io/library/mysql:latest # 真实地址</span><br></pre></td></tr></table></figure>
+
+<p>如果不写TAG，则默认下载最新的镜像。</p>
+<p>以下两个命令等价：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull mysql</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull docker.io/library/mysql:latest</span></span><br></pre></td></tr></table></figure>
+
+<p>指定版本下载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull mysql:5.7</span></span><br><span class="line">5.7: Pulling from library/mysql</span><br><span class="line">6ec7b7d162b2: Already exists </span><br><span class="line">fedd960d3481: Already exists </span><br><span class="line">7ab947313861: Already exists </span><br><span class="line">64f92f19e638: Already exists </span><br><span class="line">3e80b17bff96: Already exists </span><br><span class="line">014e976799f9: Already exists </span><br><span class="line">59ae84fee1b3: Already exists </span><br><span class="line">7d1da2a18e2e: Pull complete </span><br><span class="line">301a28b700b9: Downloading [============&gt;                                      ]  26.25MB/108.3MB</span><br><span class="line">529dc8dbeaf3: Download complete </span><br><span class="line">bc9d021dc13f: Download complete </span><br></pre></td></tr></table></figure>
+
+<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><p>使用方式：</p>
+<blockquote>
+<p>docker rmi [OPTIONS] IMAGE [IMAGE…]</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker rmi -f 882aebcdb308</span></span><br><span class="line">Deleted: sha256:882aebcdb308cd2f1dc333c3fc1676614ea0bd9b4379d0bfdf5db55640e56e56</span><br><span class="line">Deleted: sha256:7da399cc68d63c6d3540bad15369c46e971443bc73981df585a7a37aefd3983a</span><br><span class="line">Deleted: sha256:b480ebcefedc620f17a24d5c61a336361c075db1aaf57e2a1de32b97f69eb3a4</span><br><span class="line">Deleted: sha256:957eb1ae5cf15a8089a9b19aaacbacdaf06fb5045d6fb2bb95c3c37961b09081</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>删除所有的镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker rmi -f $(docker images -aq)</span></span><br></pre></td></tr></table></figure>
+
+<p>其中<code>$(docker images -aq)</code>为查询所有镜像的ID</p>
+</div><h2 id="Docker容器命令"><a href="#Docker容器命令" class="headerlink" title="Docker容器命令"></a>Docker容器命令</h2><div class="story post-story"><p>安装centos进行测试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker pull centos</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="新建容器并运行"><a href="#新建容器并运行" class="headerlink" title="新建容器并运行"></a>新建容器并运行</h3><blockquote>
+<p>docker run [OPTIONS] IMAGE [COMMAND] [ARG…]</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -it  centos /bin/bash <span class="comment"># 运行并进入容器</span></span></span><br><span class="line">[root@fbddb27d188f /]# ls # 查看容器内的centos</span><br><span class="line">bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</span><br><span class="line">[root@fbddb27d188f /]# exit # 从容器退回主机</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h3><blockquote>
+<p>docker ps [OPTIONS]</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker ps <span class="comment"># 查看当前正在运行的容器</span></span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker ps -all <span class="comment"># 列出当前运行的容器+查看曾经运行的容器</span></span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES</span><br><span class="line">fbddb27d188f        centos              &quot;/bin/bash&quot;         14 minutes ago      Exited (0) 3 minutes ago                       happy_kowalevski</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Option名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-all, -a</td>
+<td>显示所有容器</td>
+</tr>
+<tr>
+<td>–last, -n</td>
+<td>显示最近创建的n个容器</td>
+</tr>
+<tr>
+<td>–quiet, -q</td>
+<td>只显示容器的ID</td>
+</tr>
+</tbody></table>
+<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><p>退出并关闭容器</p>
+<blockquote>
+<p>exit</p>
+</blockquote>
+<p>退出但不关闭容器</p>
+<blockquote>
+<p>Ctrl + P + Q</p>
+</blockquote>
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><p>使用方式：</p>
+<blockquote>
+<p>docker rm [OPTIONS] CONTAINER [CONTAINER…]</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Option选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--force , -f</code></td>
+<td>Force the removal of a running container (uses SIGKILL)</td>
+</tr>
+<tr>
+<td><code>--link , -l</code></td>
+<td>Remove the specified link</td>
+</tr>
+<tr>
+<td><code>--volumes , -v</code></td>
+<td>Remove anonymous volumes associated with the container</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker <span class="built_in">rm</span> fbddb27d188f</span></span><br><span class="line">fbddb27d188f</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker start [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>重启容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker restart [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>停止容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker stop [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>强制停止当前容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker <span class="built_in">kill</span> [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+
+
+</div><h2 id="常用其他命令"><a href="#常用其他命令" class="headerlink" title="常用其他命令"></a>常用其他命令</h2><div class="story post-story"><p><strong>后台运行容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d centos</span></span><br><span class="line">f3cc16b38e9dc3e281681f226128b3f084aec79b9d9c27721a83f36189fdaebc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">lize @ lize-linux <span class="keyword">in</span> ~ [21:15:59]</span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker ps</span>           </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">lize @ lize-linux <span class="keyword">in</span> ~ [21:16:04]</span> </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker ps -all</span>      </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">f3cc16b38e9d        centos              &quot;/bin/bash&quot;         12 seconds ago      Exited (0) 11 seconds ago                       elegant_archimedes</span><br></pre></td></tr></table></figure>
+
+<p><code>docker run -d centos</code>中的-d表示后台运行，但是该后台运行必须对应一个前台进程，否则docker会将这个容器停止。</p>
+<p><strong>查看日志</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker logs -tf --<span class="built_in">tail</span> 10 [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+<p><code>-tf</code>表示显示日志， <code>--tail [数字]</code>表示要显示日志条数。</p>
+<p><strong>查看容器内部进程</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker top [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker top 8326642ceb7d</span>        </span><br><span class="line">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">root                20286               20264               0                   21:46               pts/0               00:00:00            /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看容器的元数据</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker inspect [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>进入当前正在运行的容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker <span class="built_in">exec</span> -it [容器ID] bashshell</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker attach [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+<p>两者区别：<code>docker exec </code>在进入容器后开启一个新的终端，<code>docker attach </code>在进入容器后使用正在执行的一个终端。</p>
+<p><strong>将容器内部的文件拷贝到主机上</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker <span class="built_in">cp</span> [容器ID]:[容器中的文件路径] [主机文件夹路径]</span></span><br></pre></td></tr></table></figure>
+
+<p>![](&#x2F;home&#x2F;lize&#x2F;Pictures&#x2F;Screenshot from 2021-01-05 23-14-52.png)</p>
+</div><h2 id="作业1：docker部署nginx"><a href="#作业1：docker部署nginx" class="headerlink" title="作业1：docker部署nginx"></a>作业1：docker部署nginx</h2><div class="story post-story"><p>docker部署nginx并完成端口映射</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d --name nginx01 -p 3344:80 nginx</span></span><br><span class="line">f358c945ae0eed75160c006a0a3fac73028c9aa73f1ed2b87e6c12d708aa17fe</span><br></pre></td></tr></table></figure>
+
+</div><h2 id="作业2：docker部署tomcat"><a href="#作业2：docker部署tomcat" class="headerlink" title="作业2：docker部署tomcat"></a>作业2：docker部署tomcat</h2><div class="story post-story"><p>官方使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -it --<span class="built_in">rm</span> tomcat</span></span><br></pre></td></tr></table></figure>
+
+<p><code>--rm</code>表示停止容器后将无法查询到该容器，先在本地镜像中寻找tomcat，本地镜像没有则去docker 仓库下载。</p>
+<p>后台运行tomcat：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d  -p 3355:8080 --name tomcat01 tomcat</span></span><br></pre></td></tr></table></figure>
+
+<p>但是访问localhost:3355出现404,这是因为tomcat中的webapps目录中没有任何项目。</p>
+<p>将webapps.dist中的项目复制到webapps中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@8be6bf1b1aa5:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br></pre></td></tr></table></figure>
+
+<p>再次访问localhost:3355则出现tomcat欢迎界面。</p>
+</div><h2 id="Docker可视化界面"><a href="#Docker可视化界面" class="headerlink" title="Docker可视化界面"></a>Docker可视化界面</h2><div class="story post-story"><p>portainer是Docker图形化界面管理工具。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d -p 8088:9000 \</span></span><br><span class="line"><span class="language-bash">--restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=<span class="literal">true</span> portainer/portainer</span></span><br></pre></td></tr></table></figure>
+
+<p>访问测试：localhost:8088</p>
+</div><h2 id="Docker镜像讲解"><a href="#Docker镜像讲解" class="headerlink" title="Docker镜像讲解"></a>Docker镜像讲解</h2><div class="story post-story"><h3 id="镜像是什么"><a href="#镜像是什么" class="headerlink" title="镜像是什么"></a>镜像是什么</h3><p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件。</p>
+<p>如何得到镜像：</p>
+<ul>
+<li>从远程仓库下载</li>
+<li>从朋友处拷贝</li>
+<li>自己制作一个镜像Dockerfile</li>
+</ul>
+</div><h2 id="Commit命令"><a href="#Commit命令" class="headerlink" title="Commit命令"></a>Commit命令</h2><div class="story post-story"><p>将现有容器打包成镜像。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -it tomcat /bin/bash</span></span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# ls</span><br><span class="line">BUILDING.txt	 LICENSE  README.md	 RUNNING.txt  conf  logs	    temp     webapps.dist</span><br><span class="line">CONTRIBUTING.md  NOTICE   RELEASE-NOTES  bin	      lib   native-jni-lib  webapps  work</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# cd webapps</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat/webapps# ls</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat/webapps# </span><br></pre></td></tr></table></figure>
+
+<p>docker提供的tomcat镜像中的webapps目录下没有项目。</p>
+<p>将webapp.dist目录中的项目复制到webapps目录下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# cd webapps</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat/webapps# ls</span><br><span class="line">ROOT  docs  examples  host-manager  manager</span><br></pre></td></tr></table></figure>
+
+<p>将该容器打包成镜像：</p>
+<p>使用方式：</p>
+<blockquote>
+<p>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker commit -a=<span class="string">&quot;lize&quot;</span> -m=<span class="string">&quot;add webapps apps&quot;</span> 53b95fab247a tomcat01:1.0</span></span><br></pre></td></tr></table></figure>
+
+<p><code>-a</code>表示作者，<code>-m</code>表示提交的描述信息</p>
+</div><h2 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h2><div class="story post-story"><p>使用方式：</p>
+<blockquote>
+<p>$ docker run -it -v [主机目录]:[容器内目录] 容器 &#x2F;bin&#x2F;bash</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -it -v /home/test:/home centos /bin/bash</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>实战：</p>
+<p>将mysql配置目录和数据目录与主机目录进行双向绑定：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql</span></span><br><span class="line">da57dd0c24e10ccec927594c1c5adc83a5ae60207697cd8a2d73ed0a9b777059</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>-d 后台运行</p>
+<p>-p 端口映射</p>
+<p>-v 数据卷挂载</p>
+<p>-e 环境配置</p>
+<p>–name 容器名字</p>
+</blockquote>
+<p>上面这条命令完成了以下操作：</p>
+<ul>
+<li>在后台运行mysql</li>
+<li>将主机3310端口映射到此容器的3306端口</li>
+<li>将主机&#x2F;home&#x2F;mysql&#x2F;conf目录与容器中的etc&#x2F;mysql&#x2F;conf.d目录双向绑定</li>
+<li>将主机&#x2F;home&#x2F;mysql&#x2F;data目录与容器中的&#x2F;var&#x2F;lib&#x2F;mysql目录双向绑定</li>
+<li>配置mysql的密码为123456</li>
+<li>容器的名称为mysql01</li>
+</ul>
+<p>在主机上使用mysql workbench连接localhost:3310，如果连接成功，这就表示端口映射成功。然后使用mysql workbench创建一个名称为test的数据库，在主机的&#x2F;home&#x2F;mysql&#x2F;data目录查看，发现多出一个test目录，并且数据卷挂载成功！</p>
+<p>容器删除后，test目录将依旧存在。</p>
 
 </div>
   </div>
@@ -2592,7 +2875,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/>http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/</a></p>
+                <p>本文永久链接是：<a href=https://realize-me.github.io/2021/01/03/Docker/>https://realize-me.github.io/2021/01/03/Docker/</a></p>
               
             
           </blockquote>
@@ -2635,7 +2918,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/&title=Docker匿名挂载和具名挂载 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://realize-me.github.io/2021/01/03/Docker/&title=Docker常用命令 - 小泽のブログ&summary="
           
           >
           
@@ -2647,7 +2930,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/&title=Docker匿名挂载和具名挂载 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://realize-me.github.io/2021/01/03/Docker/&title=Docker常用命令 - 小泽のブログ&summary="
           
           >
           
@@ -2659,7 +2942,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/&title=Docker匿名挂载和具名挂载 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://realize-me.github.io/2021/01/03/Docker/&title=Docker常用命令 - 小泽のブログ&summary="
           
           >
           
@@ -2692,18 +2975,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/01/09/2021-01-09-Docker%E5%AE%B9%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Docker容器之间同步数据</p>
-          <p class='content'>首先启动一个名为docker01的容器。
-然后运行下面这个命令，新建一个名为docker02的容器。
-1$ docker run -it --name docker02 --volumes-fr...</p>
+        <a class='prev' href='/2021/01/07/PPA/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>PPA</p>
+          <p class='content'>PPA(Persional Package Archive)参考资料：https://itsfoss.com/ppa-guide/
+私人包存档，这暗示对一个开发人员独有的东西，是非官方支持的发布...</p>
         </a>
       
       
-        <a class='next' href='/2021/01/07/2021-01-07-PPA/'>
-          <p class='title'>PPA<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>PPA(Persional Package Archive)参考资料：https://itsfoss.com/ppa-guide/
-私人包存档，这暗示对一个开发人员独有的东西，是非官方支持的发布...</p>
+        <a class='next' href='/2021/01/03/CodeLite%E8%B0%83%E8%AF%95%E6%97%B6%E6%9F%A5%E7%9C%8B%E6%95%B0%E7%BB%84%E5%86%85%E5%AE%B9/'>
+          <p class='title'>CodeLite调试时查看数组内容<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>添加监视的变量名为：
+1(int[10]*)a
+
+
+</p>
         </a>
       
     </div>
@@ -2719,7 +3004,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/01/03/Docker/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2752,7 +3037,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">匿名挂载示例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E6%8C%82%E8%BD%BD%E7%9A%84%E5%8D%B7%EF%BC%9A"><span class="toc-text">查看已挂载的卷：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">具名挂载示例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%8D%E6%AC%A1%E6%9F%A5%E7%9C%8B%E5%B7%B2%E6%8C%82%E8%BD%BD%E7%9A%84%E5%8D%B7%EF%BC%9A"><span class="toc-text">再次查看已挂载的卷：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%EF%BC%9A"><span class="toc-text">拓展：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E9%95%9C%E5%83%8F%E5%91%BD%E4%BB%A4"><span class="toc-text">Docker镜像命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F"><span class="toc-text">查看镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E9%95%9C%E5%83%8F"><span class="toc-text">搜索镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8F%AF%E9%80%89%E9%A1%B9"><span class="toc-text">查看某个命令的可选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="toc-text">下载镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F"><span class="toc-text">删除镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">Docker容器命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E5%AE%B9%E5%99%A8%E5%B9%B6%E8%BF%90%E8%A1%8C"><span class="toc-text">新建容器并运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8"><span class="toc-text">查看容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E5%87%BA%E5%AE%B9%E5%99%A8"><span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="toc-text">删除容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="toc-text">常用其他命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A1%EF%BC%9Adocker%E9%83%A8%E7%BD%B2nginx"><span class="toc-text">作业1：docker部署nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A2%EF%BC%9Adocker%E9%83%A8%E7%BD%B2tomcat"><span class="toc-text">作业2：docker部署tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%8F%AF%E8%A7%86%E5%8C%96%E7%95%8C%E9%9D%A2"><span class="toc-text">Docker可视化界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E9%95%9C%E5%83%8F%E8%AE%B2%E8%A7%A3"><span class="toc-text">Docker镜像讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">镜像是什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commit%E5%91%BD%E4%BB%A4"><span class="toc-text">Commit命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="toc-text">使用数据卷</span></a></li></ol>
     </div>
   </section>
 
@@ -2804,7 +3089,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Docker匿名挂载和具名挂载";
+  pdata.postTitle="Docker常用命令";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2914,7 +3199,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1649088499353.js"></script>
+<script src="/js/app.js?time=1649088963337.js"></script>
 
 
 
@@ -3106,7 +3391,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088499353')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088963337')</script>
 
 
 
@@ -3119,19 +3404,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1649088499353")
+        volantis.js("/js/plugins/sites.js?time=1649088963337")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1649088499353")
+        volantis.js("/js/plugins/friends.js?time=1649088963337")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1649088499353")
+        volantis.js("/js/plugins/contributors.js?time=1649088963337")
       }
     
   };
@@ -3256,7 +3541,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1649088499353");
+    return volantis.js("/js/search/hexo.js?time=1649088963337");
   }
 
   function loadSearchService() {
@@ -3547,7 +3832,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Docker/","name":"Docker"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/01/08/2021-01-08-Docker匿名挂载和具名挂载/","name":"Docker匿名挂载和具名挂载"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker匿名挂载和具名挂载","description":"","datePublished":"2021-01-07T16:00:00.000Z","dateModified":"2022-04-04T06:21:27.545Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/01/08/2021-01-08-Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/","wordCount":0,"articleSection":"Docker","keywords":"Docker","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小泽のブログ","url":"https://realize-me.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://realize-me.github.io/","name":"小泽のブログ"}},{"@type":"ListItem","position":2,"item":{"@id":"https://realize-me.github.io/categories/Docker/","name":"Docker"}},{"@type":"ListItem","position":3,"item":{"@id":"https://realize-me.github.io/2021/01/03/Docker/","name":"Docker常用命令"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker常用命令","description":"","datePublished":"2021-01-03T08:13:14.000Z","dateModified":"2022-04-04T06:21:27.543Z","inLanguage":"zh-Hans","mainEntityOfPage":{"@type":"WebPage","@id":"https://realize-me.github.io/2021/01/03/Docker/"},"author":{"@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/"},"publisher":{"@type":"Organization","name":"小泽のブログ","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://realize-me.github.io/2021/01/03/Docker/","wordCount":0,"articleSection":"Docker","keywords":"Docker","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
     <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-alpha.11'>
   <meta name="generator" content="Hexo 6.1.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2021/06/01/2021-06-01-jvm架构图/"/>
+  <link rel="canonical" href="https://realize-me.github.io/2021/04/02/nginx+fdfs无work进程/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -17,34 +17,36 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta content="Hexo" name="application-name">
-  <meta content="Hexo" name="apple-mobile-web-app-title">
+  <meta content="小泽のブログ" name="application-name">
+  <meta content="小泽のブログ" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1649088499353" as="style">
+  <link rel="preload" href="/css/style.css?time=1649088963337" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>JVM架构图 - Hexo</title>
-  <meta name="keywords" content="JVM,null">
-  <meta name="description" content="JVM 架构图如下： 类加载器双亲委派机制 当类加载器收到加载请求 将这个类加载请求委托给父类加载器去完成，一直向上委托，直到根加载器（启动类加载器） 启动类加载器检查是否能加载这个类，能加载就结束，使用当前的类加载器，否则抛出异常（Class not found），通知子类加载器加载 重复步骤3  native使用 native 关键字修饰的 java 方法，表示已超出 java 的作用域范围，">
+  <title>nginx+fdfs无work进程 - 小泽のブログ</title>
+  <meta name="keywords" content="nginx,FastDFS,null">
+  <meta name="description" content="问题描述：nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。 搜索了一圈，也没发现有价值的信息。重装了几次nginx且为安装fdfs模块，这个问题依旧存在。。 查看nginx的错误日志发现，work进程因为某种原因异常退出了。 123456782021&#x2F;04&#x2F;02 22:20:33 [alert] 34290#0: w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM架构图">
-<meta property="og:url" content="http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="JVM 架构图如下： 类加载器双亲委派机制 当类加载器收到加载请求 将这个类加载请求委托给父类加载器去完成，一直向上委托，直到根加载器（启动类加载器） 启动类加载器检查是否能加载这个类，能加载就结束，使用当前的类加载器，否则抛出异常（Class not found），通知子类加载器加载 重复步骤3  native使用 native 关键字修饰的 java 方法，表示已超出 java 的作用域范围，">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-06-01T08:57:50.000Z">
-<meta property="article:modified_time" content="2022-04-04T06:21:27.551Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="JVM">
+<meta property="og:title" content="nginx+fdfs无work进程">
+<meta property="og:url" content="https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/index.html">
+<meta property="og:site_name" content="小泽のブログ">
+<meta property="og:description" content="问题描述：nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。 搜索了一圈，也没发现有价值的信息。重装了几次nginx且为安装fdfs模块，这个问题依旧存在。。 查看nginx的错误日志发现，work进程因为某种原因异常退出了。 123456782021&#x2F;04&#x2F;02 22:20:33 [alert] 34290#0: w">
+<meta property="og:locale">
+<meta property="og:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2021-04-02T14:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-04T06:21:27.548Z">
+<meta property="article:author" content="realxz">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="FastDFS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta name="twitter:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
   <!-- import meta -->
   <!-- link -->
+    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
   <!-- import link -->
   <style>
     /* 首屏样式 */
@@ -1660,8 +1662,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1649088499353" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088499353"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1649088963337" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088963337"></noscript>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -1732,9 +1734,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1649088499353","sites":"/js/plugins/sites.js?time=1649088499353","friends":"/js/plugins/friends.js?time=1649088499353","parallax":"/js/plugins/parallax.js?time=1649088499353","rightMenu":"/js/plugins/rightMenu.js?time=1649088499353","contributors":"/js/plugins/contributors.js?time=1649088499353","message":"/js/thirdparty/message.js?time=1649088499353","search":"/js/search/hexo.js?time=1649088499353"},"css":{"style":"/css/style.css?time=1649088499353","message":"/css/message.css?time=1649088499353"}},
+    cdn: {"js":{"app":"/js/app.js?time=1649088963337","sites":"/js/plugins/sites.js?time=1649088963337","friends":"/js/plugins/friends.js?time=1649088963337","parallax":"/js/plugins/parallax.js?time=1649088963337","rightMenu":"/js/plugins/rightMenu.js?time=1649088963337","contributors":"/js/plugins/contributors.js?time=1649088963337","message":"/js/thirdparty/message.js?time=1649088963337","search":"/js/search/hexo.js?time=1649088963337"},"css":{"style":"/css/style.css?time=1649088963337","message":"/css/message.css?time=1649088963337"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1649088499353),
+    lastupdate: new Date(1649088963337),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2473,12 +2475,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/">
+  <link itemprop="mainEntityOfPage" href="https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
     <meta itemprop="description" content="">
   </span>
   
@@ -2494,7 +2496,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        JVM架构图
+        nginx+fdfs无work进程
       </h1>
       <div class='new-meta-box'>
         
@@ -2511,14 +2513,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Nginx/">Nginx</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Nginx/" itemprop="url"><span itemprop="name">Nginx</span></a>
+      </span>
+    
+  </div>
+
 
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-06-01T16:57:50+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-04-02T22:00:00+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 1, 2021</p>
+    <p>发布于：Apr 2, 2021</p>
   </a>
 </div>
 
@@ -2539,24 +2551,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="JVM-架构图如下："><a href="#JVM-架构图如下：" class="headerlink" title="JVM 架构图如下："></a>JVM 架构图如下：</h2><div class="story post-story"><p><img src="/jvm.svg" class="lazyload" data-srcset="/jvm.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
-</div><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><div class="story post-story"><h3 id="双亲委派机制"><a href="#双亲委派机制" class="headerlink" title="双亲委派机制"></a>双亲委派机制</h3><ol>
-<li>当类加载器收到加载请求</li>
-<li>将这个类加载请求委托给父类加载器去完成，一直向上委托，直到根加载器（启动类加载器）</li>
-<li>启动类加载器检查是否能加载这个类，能加载就结束，使用当前的类加载器，否则抛出异常（Class not found），通知子类加载器加载</li>
-<li>重复步骤3</li>
-</ol>
-</div><h2 id="native"><a href="#native" class="headerlink" title="native"></a>native</h2><div class="story post-story"><p>使用 native 关键字修饰的 java 方法，表示已超出 java 的作用域范围，会调用 C 语言库。</p>
-<p>进入本地方法栈</p>
-<p>调用本地方法接口 JNI</p>
-<p>JNI 的作用是扩展 Java 的使用，融合不同的编程语言为 Java 所用</p>
-</div><h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><div class="story post-story"><p>方法区被所有线程共享，所有字段和方法字节码，以及一些特殊方法，如构造函数，接口也在此定义，简单说，所有定义的方法的信息都保存在该区域，此区域属于共享区间。</p>
-<blockquote>
-<p>参考资料：</p>
-<p>狂神说，双亲委派机制：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iJ411d7jS?p=3&amp;spm_id_from=pageDriver">https://www.bilibili.com/video/BV1iJ411d7jS?p=3&amp;spm_id_from=pageDriver</a></p>
-</blockquote>
+    <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。</p>
+<p>搜索了一圈，也没发现有价值的信息。重装了几次nginx且为安装fdfs模块，这个问题依旧存在。。</p>
+<p>查看nginx的错误日志发现，work进程因为某种原因异常退出了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2021/04/02 22:20:33 [alert] 34290#0: worker process 44752 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44772</span><br><span class="line">2021/04/02 22:20:36 [alert] 34290#0: worker process 44772 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44799</span><br><span class="line">2021/04/02 22:20:40 [alert] 34290#0: worker process 44799 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44819</span><br><span class="line">2021/04/02 22:20:43 [alert] 34290#0: worker process 44819 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44839</span><br></pre></td></tr></table></figure>
 
-</div>
+<p>又搜索一圈，终于遇到到了和我一样的问题。<a target="_blank" rel="noopener" href="https://cychan811.gitee.io/2020/08/21/nginx-fastfds%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90%E5%90%8Eworker%E6%8A%A5%E9%94%99exited-on-signal-11-core-dumped-%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">传送门</a></p>
+<h3 id="错误原因："><a href="#错误原因：" class="headerlink" title="错误原因："></a>错误原因：</h3><p>因为nginx已经按装了fdfs模块，但是fdfs的tracker没有启动，导致nginx的work进程启动出错并退出了，接着master进程重启新的work进程，从日志文件中也可以看出，nginx循环打印这个错误。</p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>在<code>/etc/init.d</code>目录下执行这条命令，启动tracker和storage：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo fdfs_trackerd /etc/fdfs/tracker.conf</span><br><span class="line">sudo fdfs_storaged /etc/fdfs/storage.conf</span><br></pre></td></tr></table></figure>
+
+<p>并将tracker 和 storage加入开机启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d fdfs_trackerd defaults 99</span><br><span class="line">sudo update-rc.d fdfs_storage defaults 99</span><br></pre></td></tr></table></figure>
+
+<p>ps：最后的数字代表启动顺序（0~99），数字越小，优先级越高。</p>
+
+
   </div>
   
   
@@ -2574,7 +2584,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/>http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/</a></p>
+                <p>本文永久链接是：<a href=https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/>https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/</a></p>
               
             
           </blockquote>
@@ -2603,8 +2613,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/JVM/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>JVM</p></a></div>
-  <span hidden itemprop="keywords">JVM</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/nginx/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>nginx</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/FastDFS/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>FastDFS</p></a></div>
+  <span hidden itemprop="keywords">nginx FastDFS</span>
 
 
         
@@ -2617,7 +2627,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/&title=JVM架构图 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/&title=nginx+fdfs无work进程 - 小泽のブログ&summary="
           
           >
           
@@ -2629,7 +2639,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/&title=JVM架构图 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/&title=nginx+fdfs无work进程 - 小泽のブログ&summary="
           
           >
           
@@ -2641,7 +2651,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/&title=JVM架构图 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/&title=nginx+fdfs无work进程 - 小泽のブログ&summary="
           
           >
           
@@ -2674,17 +2684,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2022/04/04/hello-world/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Hello World</p>
-          <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
-        </a>
-      
-      
-        <a class='next' href='/2021/05/29/2021-05-29-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/'>
-          <p class='title'>数据库三大范式<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='prev' href='/2021/05/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>数据库三大范式</p>
           <p class='content'>函数依赖设R(U)是属性集U上的关系式，X，Y是U的子集。
 若对于 R(U) 的任意一个可能的关系 r，r中不可能存在两个元组在 X 上的属性值相等，而在 Y 的属性值上不等。
 则称 X 函数确...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/04/02/%E5%AE%89%E8%A3%85FastDFS/'>
+          <p class='title'>安装FastDFS<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>在虚拟机上配置FastDFS下载文件在用户目录leyou下创建fdfs目录，并传到该目录以下四个文件
+
+FastDFS_v5.08.tar.gz
+fastdfs-nginx-module_v1....</p>
         </a>
       
     </div>
@@ -2700,7 +2713,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2733,7 +2746,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM-%E6%9E%B6%E6%9E%84%E5%9B%BE%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-text">JVM 架构图如下：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-text">类加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="toc-text">双亲委派机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#native"><span class="toc-text">native</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-text">方法区</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%8E%9F%E5%9B%A0%EF%BC%9A"><span class="toc-text">错误原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">解决方法：</span></a></li></ol>
     </div>
   </section>
 
@@ -2785,7 +2798,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="JVM架构图";
+  pdata.postTitle="nginx+fdfs无work进程";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2895,7 +2908,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1649088499353.js"></script>
+<script src="/js/app.js?time=1649088963337.js"></script>
 
 
 
@@ -3087,7 +3100,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088499353')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088963337')</script>
 
 
 
@@ -3100,19 +3113,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1649088499353")
+        volantis.js("/js/plugins/sites.js?time=1649088963337")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1649088499353")
+        volantis.js("/js/plugins/friends.js?time=1649088963337")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1649088499353")
+        volantis.js("/js/plugins/contributors.js?time=1649088963337")
       }
     
   };
@@ -3237,7 +3250,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1649088499353");
+    return volantis.js("/js/search/hexo.js?time=1649088963337");
   }
 
   function loadSearchService() {
@@ -3528,7 +3541,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/06/01/2021-06-01-JVM架构图/","name":"JVM架构图"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"JVM架构图","description":"","datePublished":"2021-06-01T08:57:50.000Z","dateModified":"2022-04-04T06:21:27.551Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/06/01/2021-06-01-JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/","wordCount":0,"keywords":"JVM","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小泽のブログ","url":"https://realize-me.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://realize-me.github.io/","name":"小泽のブログ"}},{"@type":"ListItem","position":2,"item":{"@id":"https://realize-me.github.io/categories/Nginx/","name":"Nginx"}},{"@type":"ListItem","position":3,"item":{"@id":"https://realize-me.github.io/2021/04/02/nginx+fdfs无work进程/","name":"nginx+fdfs无work进程"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"nginx+fdfs无work进程","description":"","datePublished":"2021-04-02T14:00:00.000Z","dateModified":"2022-04-04T06:21:27.548Z","inLanguage":"zh-Hans","mainEntityOfPage":{"@type":"WebPage","@id":"https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/"},"author":{"@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/"},"publisher":{"@type":"Organization","name":"小泽のブログ","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://realize-me.github.io/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/","wordCount":0,"articleSection":"Nginx","keywords":"nginx,FastDFS","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

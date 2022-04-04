@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
     <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-alpha.11'>
   <meta name="generator" content="Hexo 6.1.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2021/04/02/2021-04-02-安装fastdfs/"/>
+  <link rel="canonical" href="https://realize-me.github.io/2021/01/02/vscode配置c-环境/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -17,33 +17,35 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta content="Hexo" name="application-name">
-  <meta content="Hexo" name="apple-mobile-web-app-title">
+  <meta content="小泽のブログ" name="application-name">
+  <meta content="小泽のブログ" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1649088499353" as="style">
+  <link rel="preload" href="/css/style.css?time=1649088963337" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>安装FastDFS - Hexo</title>
-  <meta name="keywords" content="null">
-  <meta name="description" content="在虚拟机上配置FastDFS下载文件在用户目录leyou下创建fdfs目录，并传到该目录以下四个文件  FastDFS_v5.08.tar.gz fastdfs-nginx-module_v1.16.tar.gz libevent-2.0.22-stable.tar.gz libfastcommon-master.zip  安装以下内容安装gcc依赖 1$ yum -y install gcc">
+  <title>vscode配置c++环境 - 小泽のブログ</title>
+  <meta name="keywords" content="vscode,null">
+  <meta name="description" content="vscode配置c++环境1.配置c++ IntelliSense使用F1 快捷键打开命令选项，输入C&#x2F;C++:Edit configuration，然后在.vscode文件夹自动生成c_cpp_properties.json配置文件。 2.launch.json配置文件在debug界面中添加配置，然后选c++(gdb&#x2F;lgdb)选项，然后自动生成launch.json配置文件，该配置文件主要用于">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装FastDFS">
-<meta property="og:url" content="http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在虚拟机上配置FastDFS下载文件在用户目录leyou下创建fdfs目录，并传到该目录以下四个文件  FastDFS_v5.08.tar.gz fastdfs-nginx-module_v1.16.tar.gz libevent-2.0.22-stable.tar.gz libfastcommon-master.zip  安装以下内容安装gcc依赖 1$ yum -y install gcc">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-04-02T07:44:14.000Z">
-<meta property="article:modified_time" content="2022-04-04T06:21:27.550Z">
-<meta property="article:author" content="John Doe">
+<meta property="og:title" content="vscode配置c++环境">
+<meta property="og:url" content="https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="小泽のブログ">
+<meta property="og:description" content="vscode配置c++环境1.配置c++ IntelliSense使用F1 快捷键打开命令选项，输入C&#x2F;C++:Edit configuration，然后在.vscode文件夹自动生成c_cpp_properties.json配置文件。 2.launch.json配置文件在debug界面中添加配置，然后选c++(gdb&#x2F;lgdb)选项，然后自动生成launch.json配置文件，该配置文件主要用于">
+<meta property="og:locale">
+<meta property="og:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2021-01-02T09:52:52.000Z">
+<meta property="article:modified_time" content="2022-04-04T06:21:27.540Z">
+<meta property="article:author" content="realxz">
+<meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta name="twitter:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
   <!-- import meta -->
   <!-- link -->
+    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
   <!-- import link -->
   <style>
     /* 首屏样式 */
@@ -1659,8 +1661,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1649088499353" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088499353"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1649088963337" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088963337"></noscript>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -1731,9 +1733,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1649088499353","sites":"/js/plugins/sites.js?time=1649088499353","friends":"/js/plugins/friends.js?time=1649088499353","parallax":"/js/plugins/parallax.js?time=1649088499353","rightMenu":"/js/plugins/rightMenu.js?time=1649088499353","contributors":"/js/plugins/contributors.js?time=1649088499353","message":"/js/thirdparty/message.js?time=1649088499353","search":"/js/search/hexo.js?time=1649088499353"},"css":{"style":"/css/style.css?time=1649088499353","message":"/css/message.css?time=1649088499353"}},
+    cdn: {"js":{"app":"/js/app.js?time=1649088963337","sites":"/js/plugins/sites.js?time=1649088963337","friends":"/js/plugins/friends.js?time=1649088963337","parallax":"/js/plugins/parallax.js?time=1649088963337","rightMenu":"/js/plugins/rightMenu.js?time=1649088963337","contributors":"/js/plugins/contributors.js?time=1649088963337","message":"/js/thirdparty/message.js?time=1649088963337","search":"/js/search/hexo.js?time=1649088963337"},"css":{"style":"/css/style.css?time=1649088963337","message":"/css/message.css?time=1649088963337"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1649088499353),
+    lastupdate: new Date(1649088963337),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2472,12 +2474,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/">
+  <link itemprop="mainEntityOfPage" href="https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
     <meta itemprop="description" content="">
   </span>
   
@@ -2493,7 +2495,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        安装FastDFS
+        vscode配置c++环境
       </h1>
       <div class='new-meta-box'>
         
@@ -2512,10 +2514,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/FastDFS/">FastDFS</a>
+    <a class="category-link" href="/categories/vscode/">vscode</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/FastDFS/" itemprop="url"><span itemprop="name">FastDFS</span></a>
+        <a href="/categories/vscode/" itemprop="url"><span itemprop="name">vscode</span></a>
       </span>
     
   </div>
@@ -2524,10 +2526,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-04-02T15:44:14+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-01-02T17:52:52+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 2, 2021</p>
+    <p>发布于：Jan 2, 2021</p>
   </a>
 </div>
 
@@ -2548,115 +2550,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="在虚拟机上配置FastDFS"><a href="#在虚拟机上配置FastDFS" class="headerlink" title="在虚拟机上配置FastDFS"></a>在虚拟机上配置FastDFS</h2><div class="story post-story"><h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><p>在用户目录leyou下创建fdfs目录，并传到该目录以下四个文件</p>
-<ul>
-<li>FastDFS_v5.08.tar.gz</li>
-<li>fastdfs-nginx-module_v1.16.tar.gz</li>
-<li>libevent-2.0.22-stable.tar.gz</li>
-<li>libfastcommon-master.zip</li>
-</ul>
-<h3 id="安装以下内容"><a href="#安装以下内容" class="headerlink" title="安装以下内容"></a>安装以下内容</h3><p>安装gcc依赖</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install gcc</span><br></pre></td></tr></table></figure>
+    <h1 id="vscode配置c-环境"><a href="#vscode配置c-环境" class="headerlink" title="vscode配置c++环境"></a>vscode配置c++环境</h1><h2 id="1-配置c-IntelliSense"><a href="#1-配置c-IntelliSense" class="headerlink" title="1.配置c++ IntelliSense"></a>1.配置c++ IntelliSense</h2><div class="story post-story"><p>使用<code>F1</code> 快捷键打开命令选项，输入<code>C/C++:Edit configuration</code>，然后在<code>.vscode</code>文件夹自动生成<code>c_cpp_properties.json</code>配置文件。</p>
+</div><h2 id="2-launch-json配置文件"><a href="#2-launch-json配置文件" class="headerlink" title="2.launch.json配置文件"></a>2.launch.json配置文件</h2><div class="story post-story"><p>在debug界面中添加配置，然后选<code>c++(gdb/lgdb)</code>选项，然后自动生成<code>launch.json</code>配置文件，该配置文件主要用于调试时的加载控制。</p>
+</div><h2 id="3-tasks-json配置文件"><a href="#3-tasks-json配置文件" class="headerlink" title="3.tasks.json配置文件"></a>3.tasks.json配置文件</h2><div class="story post-story"><p>在命令窗口中输入task，选择<code>task:configure task</code>选项，生成<code>task.json</code>配置文件。</p>
+<p>注意：<code>task.json</code>中的<code>label</code>属性值要和<code>launch.json</code>中<code>preLaunchTask</code>属性值相同。</p>
 
-<p>安装unzip工具，用于对压缩包进行解压</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y unzip zip</span><br></pre></td></tr></table></figure>
-
-<p>安装libevent</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install libevent</span><br></pre></td></tr></table></figure>
-
-<p>安装Nginx所需依赖</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install pcre pcre-devel zlib zlib-devel openssl openssl-devel</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装libfastcommon-master"><a href="#安装libfastcommon-master" class="headerlink" title="安装libfastcommon-master"></a>安装libfastcommon-master</h3><p>解压</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ unzip libfastcommon-master.zip</span><br></pre></td></tr></table></figure>
-
-<p>在<code>libfastcommon-master</code>目录下使用<code>make</code>命令安装</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./make.sh &amp;&amp; ./make.sh install</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装FastDFS"><a href="#安装FastDFS" class="headerlink" title="安装FastDFS"></a>安装FastDFS</h3><p>在<code>/home/leyou</code>目录下解压<code>FastDFS_v5.08.tar.gz</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf FastDFS_v5.08.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>在<code>/home/leyou/FastDFS_v5.08</code>目录下安装（安装不分Traker和storage，启动谁就是谁）</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./make.sh &amp;&amp; ./make.sh install</span><br></pre></td></tr></table></figure>
-
-
-<p>复制样例配置文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf</span><br></pre></td></tr></table></figure>
-
-<p>编辑</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fdfs/tracker.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改路径（运行数据和日志目录）<code>base_path=/leyou/fdfs/tracker</code></p>
-<p>启动tracker服务</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/fdfs_trackerd /etc/fdfs/tracker.conf</span><br></pre></td></tr></table></figure>
-
-<p>tracker服务加入开机启动</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig /etc/init.d/fdfs_trackerd on</span><br></pre></td></tr></table></figure>
-
-<p>配置storage</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改base_path、store_path0和tracker_server</p>
-<p><code>base_path=/leyou/fdfs/storage</code><br><code>store_path0=/leyou/fdfs/storage</code><br><code>tracker_server=192.168.116.128:22122</code></p>
-<p>启动storage</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/fdfs_storaged /etc/fdfs/storage.conf</span><br></pre></td></tr></table></figure>
-<p>设置storage开机启动</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig /etc/init.id/fdfs_storaged on</span><br></pre></td></tr></table></figure>
-
-<p>测试文件上传</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /etc/fdfs/client.conf.sample /etc/fdfs/client.conf</span><br></pre></td></tr></table></figure>
-
-<p>执行上传脚本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/fdfs_upload_file client.conf /tmp/1.jpg</span><br><span class="line">group1/M00/00/00/wKh0gF6fN4SAH0KcAACCo_0btQw605.jpg</span><br></pre></td></tr></table></figure>
-
-<p>返回值：group1:组名、M00:对应store_path0、&#x2F;00&#x2F;00:磁盘路径</p>
-<h3 id="Nginx将图片请求转发到FastDFS"><a href="#Nginx将图片请求转发到FastDFS" class="headerlink" title="Nginx将图片请求转发到FastDFS"></a>Nginx将图片请求转发到FastDFS</h3><p>安装FastDFS的Nginx模块</p>
-<p>在<code>/home/leyou</code>目录下解压<code>fastdfs-nginx-module_v1.16.tar.gz</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf fastdfs-nginx-module_v1.16.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>修改配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /home/leyou/fastdfs-nginx-module/src/config</span><br><span class="line">执行命令 :%s+/usr/local/+/usr/+g</span><br></pre></td></tr></table></figure>
-
-<p>配置mod_fastdfs.conf</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /home/leyou/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/</span><br><span class="line">vim /etc/fdfs/mod_fastdfs.conf</span><br></pre></td></tr></table></figure>
-<p> 修改配置<br><code>connection_timeout=10</code><br><code>tracker_server=192.168.116.128:22122</code><br><code>url_have_group_name=true</code><br><code>store_path0=/leyou/fdfs/storage</code></p>
-<p>http相关配置</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /home/leyou/FastDFS/conf/http.conf mime.types /etc/fdfs</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# cd /etc/fdfs</span><br><span class="line">[root@localhost fdfs]# ll</span><br><span class="line">总用量 80</span><br><span class="line">-rw-r--r--. 1 root root  1447 4月  22 02:10 client.conf</span><br><span class="line">-rw-r--r--. 1 root root  1461 4月  22 00:35 client.conf.sample</span><br><span class="line">-rw-r--r--. 1 root root   858 4月  22 09:50 http.conf</span><br><span class="line">-rw-r--r--. 1 root root 31172 4月  22 09:50 mime.types</span><br><span class="line">-rw-r--r--. 1 root root  3686 4月  22 09:48 mod_fastdfs.conf</span><br><span class="line">-rw-r--r--. 1 root root  7827 4月  22 01:59 storage.conf</span><br><span class="line">-rw-r--r--. 1 root root  7829 4月  22 01:07 storage.conf.sample</span><br><span class="line">-rw-r--r--. 1 root root  7101 4月  22 01:22 tracker.conf</span><br><span class="line">-rw-r--r--. 1 root root  7102 4月  22 01:07 tracker.conf.sample</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>配置Nginx：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/leyou/nginx-1.16.1/configure --prefix=/opt/nginx --sbin-path=/usr/bin/nginx --add-module=/home/leyou/fastdfs-nginx-module/src</span><br></pre></td></tr></table></figure>
-
-<p>在&#x2F;home&#x2F;leyou&#x2F;nginx-1.16 目录使用<code>make</code>命令编译</p>
-<p>备份</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /usr/bin/nginx /usr/bin/nginx-back</span><br></pre></td></tr></table></figure>
-<p>编译后,在<code>/home/leyou/nginx-1.16/objs</code>目录下生成了nginx可执行文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.16.1]<span class="comment"># cd objs/</span></span><br><span class="line">[root@localhost objs]<span class="comment"># ll</span></span><br><span class="line">总用量 5220</span><br><span class="line">drwxr-xr-x. 3 root root      17 4月  22 10:11 addon</span><br><span class="line">-rw-r--r--. 1 root root   17385 4月  22 10:11 autoconf.err</span><br><span class="line">-rw-r--r--. 1 root root   40514 4月  22 10:11 Makefile</span><br><span class="line">-rwxr-xr-x. 1 root root 5202032 4月  22 10:13 nginx</span><br><span class="line">-rw-r--r--. 1 root root    5317 4月  22 10:13 nginx.8</span><br><span class="line">-rw-r--r--. 1 root root    7042 4月  22 10:11 ngx_auto_config.h</span><br><span class="line">-rw-r--r--. 1 root root     657 4月  22 10:11 ngx_auto_headers.h</span><br><span class="line">-rw-r--r--. 1 root root    5963 4月  22 10:11 ngx_modules.c</span><br><span class="line">-rw-r--r--. 1 root root   45184 4月  22 10:13 ngx_modules.o</span><br><span class="line">drwxr-xr-x. 9 root root      91 4月  22 01:05 src</span><br></pre></td></tr></table></figure>
-<p>将<code>/usr/bin/nginx</code>替换为<code>/home/leyou/nginx-1.16.1/objs/nginx</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /home/leyou/nginx-1.16.1/objs/nginx /usr/bin</span><br></pre></td></tr></table></figure>
-
-<p>修改host</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.116.128 image.leyou.com</span><br></pre></td></tr></table></figure>
-
-<p>修改Nginx配置文件</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span> image.leyou.com;</span><br><span class="line">  <span class="section">location</span> ~/group([<span class="number">0</span>-<span class="number">9</span>])/&#123;</span><br><span class="line">    ngx_fastdfs_module;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="section">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span> html;</span><br><span class="line">    <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">  <span class="attribute">root</span> html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输入<code>nginx</code>命令重启Nginx</p>
-<p>出现第二行<code>ngx_http_fastdfs_set pid=6174</code>内容表示重启成功</p>
-<h3 id="Nginx开机启动"><a href="#Nginx开机启动" class="headerlink" title="Nginx开机启动"></a>Nginx开机启动</h3><p> Save this file as <code>/etc/init.d/nginx</code> </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
-
-<p>添加以下脚本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># nginx - this script starts and stops the nginx daemon</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># chkconfig:   - 85 15</span></span><br><span class="line"><span class="comment"># description:  NGINX is an HTTP(S) server, HTTP(S) reverse \</span></span><br><span class="line"><span class="comment">#               proxy and IMAP/POP3 proxy server</span></span><br><span class="line"><span class="comment"># processname: nginx</span></span><br><span class="line"><span class="comment"># config:      /etc/nginx/nginx.conf</span></span><br><span class="line"><span class="comment"># config:      /etc/sysconfig/nginx</span></span><br><span class="line"><span class="comment"># pidfile:     /var/run/nginx.pid</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Source function library.</span></span><br><span class="line">. /etc/rc.d/init.d/functions</span><br><span class="line"></span><br><span class="line"><span class="comment"># Source networking configuration.</span></span><br><span class="line">. /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check that networking is up.</span></span><br><span class="line">[ <span class="string">&quot;<span class="variable">$NETWORKING</span>&quot;</span> = <span class="string">&quot;no&quot;</span> ] &amp;&amp; <span class="built_in">exit</span> 0</span><br><span class="line"></span><br><span class="line">nginx=<span class="string">&quot;/usr/bin/nginx&quot;</span></span><br><span class="line">prog=$(<span class="built_in">basename</span> <span class="variable">$nginx</span>)</span><br><span class="line"></span><br><span class="line">NGINX_CONF_FILE=<span class="string">&quot;/opt/nginx/conf/nginx.conf&quot;</span></span><br><span class="line"></span><br><span class="line">[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginx</span><br><span class="line"></span><br><span class="line">lockfile=/var/lock/subsys/nginx</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">make_dirs</span></span>() &#123;</span><br><span class="line">   <span class="comment"># make required directories</span></span><br><span class="line">   user=`<span class="variable">$nginx</span> -V 2&gt;&amp;1 | grep <span class="string">&quot;configure arguments:.*--user=&quot;</span> | sed <span class="string">&#x27;s/[^*]*--user=\([^ ]*\).*/\1/g&#x27;</span> -`</span><br><span class="line">   <span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$user</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">      <span class="keyword">if</span> [ -z <span class="string">&quot;`grep <span class="variable">$user</span> /etc/passwd`&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">         useradd -M -s /bin/nologin <span class="variable">$user</span></span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">      options=`<span class="variable">$nginx</span> -V 2&gt;&amp;1 | grep <span class="string">&#x27;configure arguments:&#x27;</span>`</span><br><span class="line">      <span class="keyword">for</span> opt <span class="keyword">in</span> <span class="variable">$options</span>; <span class="keyword">do</span></span><br><span class="line">          <span class="keyword">if</span> [ `<span class="built_in">echo</span> <span class="variable">$opt</span> | grep <span class="string">&#x27;.*-temp-path&#x27;</span>` ]; <span class="keyword">then</span></span><br><span class="line">              value=`<span class="built_in">echo</span> <span class="variable">$opt</span> | <span class="built_in">cut</span> -d <span class="string">&quot;=&quot;</span> -f 2`</span><br><span class="line">              <span class="keyword">if</span> [ ! -d <span class="string">&quot;<span class="variable">$value</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">                  <span class="comment"># echo &quot;creating&quot; $value</span></span><br><span class="line">                  <span class="built_in">mkdir</span> -p <span class="variable">$value</span> &amp;&amp; <span class="built_in">chown</span> -R <span class="variable">$user</span> <span class="variable">$value</span></span><br><span class="line">              <span class="keyword">fi</span></span><br><span class="line">          <span class="keyword">fi</span></span><br><span class="line">       <span class="keyword">done</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span></span>() &#123;</span><br><span class="line">    [ -x <span class="variable">$nginx</span> ] || <span class="built_in">exit</span> 5</span><br><span class="line">    [ -f <span class="variable">$NGINX_CONF_FILE</span> ] || <span class="built_in">exit</span> 6</span><br><span class="line">    make_dirs</span><br><span class="line">    <span class="built_in">echo</span> -n $<span class="string">&quot;Starting <span class="variable">$prog</span>: &quot;</span></span><br><span class="line">    daemon <span class="variable">$nginx</span> -c <span class="variable">$NGINX_CONF_FILE</span></span><br><span class="line">    retval=$?</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    [ <span class="variable">$retval</span> -eq 0 ] &amp;&amp; <span class="built_in">touch</span> <span class="variable">$lockfile</span></span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$retval</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">stop</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> -n $<span class="string">&quot;Stopping <span class="variable">$prog</span>: &quot;</span></span><br><span class="line">    killproc <span class="variable">$prog</span> -QUIT</span><br><span class="line">    retval=$?</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">    [ <span class="variable">$retval</span> -eq 0 ] &amp;&amp; <span class="built_in">rm</span> -f <span class="variable">$lockfile</span></span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$retval</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">restart</span></span>() &#123;</span><br><span class="line">    configtest || <span class="built_in">return</span> $?</span><br><span class="line">    stop</span><br><span class="line">    <span class="built_in">sleep</span> 1</span><br><span class="line">    start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">reload</span></span>() &#123;</span><br><span class="line">    configtest || <span class="built_in">return</span> $?</span><br><span class="line">    <span class="built_in">echo</span> -n $<span class="string">&quot;Reloading <span class="variable">$prog</span>: &quot;</span></span><br><span class="line">    killproc <span class="variable">$prog</span> -HUP</span><br><span class="line">    retval=$?</span><br><span class="line">    <span class="built_in">echo</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">force_reload</span></span>() &#123;</span><br><span class="line">    restart</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">configtest</span></span>() &#123;</span><br><span class="line">  <span class="variable">$nginx</span> -t -c <span class="variable">$NGINX_CONF_FILE</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rh_status</span></span>() &#123;</span><br><span class="line">    status <span class="variable">$prog</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rh_status_q</span></span>() &#123;</span><br><span class="line">    rh_status &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        rh_status_q &amp;&amp; <span class="built_in">exit</span> 0</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        rh_status_q || <span class="built_in">exit</span> 0</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    restart|configtest)</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    reload)</span><br><span class="line">        rh_status_q || <span class="built_in">exit</span> 7</span><br><span class="line">        <span class="variable">$1</span></span><br><span class="line">        ;;</span><br><span class="line">    force-reload)</span><br><span class="line">        force_reload</span><br><span class="line">        ;;</span><br><span class="line">    status)</span><br><span class="line">        rh_status</span><br><span class="line">        ;;</span><br><span class="line">    condrestart|try-restart)</span><br><span class="line">        rh_status_q || <span class="built_in">exit</span> 0</span><br><span class="line">            ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> $<span class="string">&quot;Usage: <span class="variable">$0</span> &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;&quot;</span></span><br><span class="line">        <span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
-
-<p> nginx&#x3D;”&#x2F;usr&#x2F;sbin&#x2F;nginx” 修改成nginx执行程序的路径。<br>NGINX_CONF_FILE&#x3D;”&#x2F;etc&#x2F;nginx&#x2F;nginx.conf” 修改成配置文件的路径。 </p>
-<p>修改文件权限</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 755 /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
-
-<p>加入服务列表</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
-
-<p>开机启动</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig nginx on</span><br></pre></td></tr></table></figure>
 </div>
   </div>
   
@@ -2675,7 +2573,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/>http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/</a></p>
+                <p>本文永久链接是：<a href=https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/>https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/</a></p>
               
             
           </blockquote>
@@ -2703,6 +2601,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/vscode/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>vscode</p></a></div>
+  <span hidden itemprop="keywords">vscode</span>
+
 
         
       
@@ -2714,7 +2616,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/&title=安装FastDFS - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/&title=vscode配置c++环境 - 小泽のブログ&summary="
           
           >
           
@@ -2726,7 +2628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/&title=安装FastDFS - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/&title=vscode配置c++环境 - 小泽のブログ&summary="
           
           >
           
@@ -2738,7 +2640,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/&title=安装FastDFS - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/&title=vscode配置c++环境 - 小泽のブログ&summary="
           
           >
           
@@ -2771,18 +2673,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>nginx+fdfs无work进程</p>
-          <p class='content'>问题描述：nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。
-搜索了一圈，也没发现有价值的信息。重装了几次ngin...</p>
+        <a class='prev' href='/2021/01/03/CodeLite%E8%B0%83%E8%AF%95%E6%97%B6%E6%9F%A5%E7%9C%8B%E6%95%B0%E7%BB%84%E5%86%85%E5%AE%B9/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>CodeLite调试时查看数组内容</p>
+          <p class='content'>添加监视的变量名为：
+1(int[10]*)a
+
+
+</p>
         </a>
       
-      
-        <a class='next' href='/2021/04/01/2021-04-01-ubuntu20-04%E5%AE%89%E8%A3%85nginx/'>
-          <p class='title'>ubuntu20.04安装nginx<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>一、前提条件 在继续之前，保证以 sudo 用户身份登录，并且你不能运行 Apache 或者 其他处理进程在80端口和443端口。
-二、安装nginx Nginx 在默认的 Ubuntu 源仓库...</p>
-        </a>
       
     </div>
   
@@ -2797,7 +2696,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2830,7 +2729,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E9%85%8D%E7%BD%AEFastDFS"><span class="toc-text">在虚拟机上配置FastDFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="toc-text">下载文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="toc-text">安装以下内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85libfastcommon-master"><span class="toc-text">安装libfastcommon-master</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85FastDFS"><span class="toc-text">安装FastDFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E5%B0%86%E5%9B%BE%E7%89%87%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%88%B0FastDFS"><span class="toc-text">Nginx将图片请求转发到FastDFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-text">Nginx开机启动</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEc-IntelliSense"><span class="toc-text">1.配置c++ IntelliSense</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-launch-json%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">2.launch.json配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-tasks-json%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">3.tasks.json配置文件</span></a></li></ol>
     </div>
   </section>
 
@@ -2882,7 +2781,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="安装FastDFS";
+  pdata.postTitle="vscode配置c++环境";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2992,7 +2891,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1649088499353.js"></script>
+<script src="/js/app.js?time=1649088963337.js"></script>
 
 
 
@@ -3184,7 +3083,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088499353')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088963337')</script>
 
 
 
@@ -3197,19 +3096,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1649088499353")
+        volantis.js("/js/plugins/sites.js?time=1649088963337")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1649088499353")
+        volantis.js("/js/plugins/friends.js?time=1649088963337")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1649088499353")
+        volantis.js("/js/plugins/contributors.js?time=1649088963337")
       }
     
   };
@@ -3334,7 +3233,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1649088499353");
+    return volantis.js("/js/search/hexo.js?time=1649088963337");
   }
 
   function loadSearchService() {
@@ -3625,7 +3524,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/FastDFS/","name":"FastDFS"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/04/02/2021-04-02-安装FastDFS/","name":"安装FastDFS"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"安装FastDFS","description":"","datePublished":"2021-04-02T07:44:14.000Z","dateModified":"2022-04-04T06:21:27.550Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/","wordCount":0,"articleSection":"FastDFS","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小泽のブログ","url":"https://realize-me.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://realize-me.github.io/","name":"小泽のブログ"}},{"@type":"ListItem","position":2,"item":{"@id":"https://realize-me.github.io/categories/vscode/","name":"vscode"}},{"@type":"ListItem","position":3,"item":{"@id":"https://realize-me.github.io/2021/01/02/vscode配置c-环境/","name":"vscode配置c++环境"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"vscode配置c++环境","description":"","datePublished":"2021-01-02T09:52:52.000Z","dateModified":"2022-04-04T06:21:27.540Z","inLanguage":"zh-Hans","mainEntityOfPage":{"@type":"WebPage","@id":"https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/"},"author":{"@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/"},"publisher":{"@type":"Organization","name":"小泽のブログ","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://realize-me.github.io/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/","wordCount":0,"articleSection":"vscode","keywords":"vscode","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

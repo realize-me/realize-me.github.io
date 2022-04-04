@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
     <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-alpha.11'>
   <meta name="generator" content="Hexo 6.1.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2021/04/02/2021-04-02-nginx+fdfs无work进程/"/>
+  <link rel="canonical" href="https://realize-me.github.io/2021/04/01/ubuntu20-04安装nginx/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -17,35 +17,34 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta content="Hexo" name="application-name">
-  <meta content="Hexo" name="apple-mobile-web-app-title">
+  <meta content="小泽のブログ" name="application-name">
+  <meta content="小泽のブログ" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1649088499353" as="style">
+  <link rel="preload" href="/css/style.css?time=1649088963337" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>nginx+fdfs无work进程 - Hexo</title>
-  <meta name="keywords" content="nginx,FastDFS,null">
-  <meta name="description" content="问题描述：nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。 搜索了一圈，也没发现有价值的信息。重装了几次nginx且为安装fdfs模块，这个问题依旧存在。。 查看nginx的错误日志发现，work进程因为某种原因异常退出了。 123456782021&#x2F;04&#x2F;02 22:20:33 [alert] 34290#0: w">
+  <title>ubuntu20.04安装nginx - 小泽のブログ</title>
+  <meta name="keywords" content="null">
+  <meta name="description" content="一、前提条件 在继续之前，保证以 sudo 用户身份登录，并且你不能运行 Apache 或者 其他处理进程在80端口和443端口。 二、安装nginx Nginx 在默认的 Ubuntu 源仓库中可用。想要安装它，运行下面的命令：  12sudo apt updatesudo apt install nginx    一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它：  1s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx+fdfs无work进程">
-<meta property="og:url" content="http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="问题描述：nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。 搜索了一圈，也没发现有价值的信息。重装了几次nginx且为安装fdfs模块，这个问题依旧存在。。 查看nginx的错误日志发现，work进程因为某种原因异常退出了。 123456782021&#x2F;04&#x2F;02 22:20:33 [alert] 34290#0: w">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-04-02T14:00:00.000Z">
+<meta property="og:title" content="ubuntu20.04安装nginx">
+<meta property="og:url" content="https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/index.html">
+<meta property="og:site_name" content="小泽のブログ">
+<meta property="og:description" content="一、前提条件 在继续之前，保证以 sudo 用户身份登录，并且你不能运行 Apache 或者 其他处理进程在80端口和443端口。 二、安装nginx Nginx 在默认的 Ubuntu 源仓库中可用。想要安装它，运行下面的命令：  12sudo apt updatesudo apt install nginx    一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它：  1s">
+<meta property="og:locale">
+<meta property="og:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2021-04-01T03:49:59.000Z">
 <meta property="article:modified_time" content="2022-04-04T06:21:27.548Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="nginx">
-<meta property="article:tag" content="FastDFS">
+<meta property="article:author" content="realxz">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta name="twitter:image" content="https://realize-me.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
   <!-- import meta -->
   <!-- link -->
+    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
   <!-- import link -->
   <style>
     /* 首屏样式 */
@@ -1661,8 +1660,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1649088499353" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088499353"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1649088963337" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088963337"></noscript>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -1733,9 +1732,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1649088499353","sites":"/js/plugins/sites.js?time=1649088499353","friends":"/js/plugins/friends.js?time=1649088499353","parallax":"/js/plugins/parallax.js?time=1649088499353","rightMenu":"/js/plugins/rightMenu.js?time=1649088499353","contributors":"/js/plugins/contributors.js?time=1649088499353","message":"/js/thirdparty/message.js?time=1649088499353","search":"/js/search/hexo.js?time=1649088499353"},"css":{"style":"/css/style.css?time=1649088499353","message":"/css/message.css?time=1649088499353"}},
+    cdn: {"js":{"app":"/js/app.js?time=1649088963337","sites":"/js/plugins/sites.js?time=1649088963337","friends":"/js/plugins/friends.js?time=1649088963337","parallax":"/js/plugins/parallax.js?time=1649088963337","rightMenu":"/js/plugins/rightMenu.js?time=1649088963337","contributors":"/js/plugins/contributors.js?time=1649088963337","message":"/js/thirdparty/message.js?time=1649088963337","search":"/js/search/hexo.js?time=1649088963337"},"css":{"style":"/css/style.css?time=1649088963337","message":"/css/message.css?time=1649088963337"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1649088499353),
+    lastupdate: new Date(1649088963337),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2474,12 +2473,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/">
+  <link itemprop="mainEntityOfPage" href="https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Hexo">
+    <meta itemprop="name" content="小泽のブログ">
     <meta itemprop="description" content="">
   </span>
   
@@ -2495,7 +2494,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        nginx+fdfs无work进程
+        ubuntu20.04安装nginx
       </h1>
       <div class='new-meta-box'>
         
@@ -2526,10 +2525,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-04-02T22:00:00+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-04-01T11:49:59+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 2, 2021</p>
+    <p>发布于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -2550,22 +2549,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。</p>
-<p>搜索了一圈，也没发现有价值的信息。重装了几次nginx且为安装fdfs模块，这个问题依旧存在。。</p>
-<p>查看nginx的错误日志发现，work进程因为某种原因异常退出了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2021/04/02 22:20:33 [alert] 34290#0: worker process 44752 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44772</span><br><span class="line">2021/04/02 22:20:36 [alert] 34290#0: worker process 44772 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44799</span><br><span class="line">2021/04/02 22:20:40 [alert] 34290#0: worker process 44799 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44819</span><br><span class="line">2021/04/02 22:20:43 [alert] 34290#0: worker process 44819 exited on signal 11 (core dumped)</span><br><span class="line">ngx_http_fastdfs_process_init pid=44839</span><br></pre></td></tr></table></figure>
+    <h2 id="一、前提条件"><a href="#一、前提条件" class="headerlink" title="一、前提条件"></a>一、前提条件</h2><div class="story post-story"><p> 在继续之前，保证以 sudo 用户身份登录，并且你不能运行 Apache 或者 其他处理进程在80端口和443端口。</p>
+</div><h2 id="二、安装nginx"><a href="#二、安装nginx" class="headerlink" title="二、安装nginx"></a>二、安装nginx</h2><div class="story post-story"><p> Nginx 在默认的 Ubuntu 源仓库中可用。想要安装它，运行下面的命令： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
 
-<p>又搜索一圈，终于遇到到了和我一样的问题。<a target="_blank" rel="noopener" href="https://cychan811.gitee.io/2020/08/21/nginx-fastfds%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90%E5%90%8Eworker%E6%8A%A5%E9%94%99exited-on-signal-11-core-dumped-%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">传送门</a></p>
-<h3 id="错误原因："><a href="#错误原因：" class="headerlink" title="错误原因："></a>错误原因：</h3><p>因为nginx已经按装了fdfs模块，但是fdfs的tracker没有启动，导致nginx的work进程启动出错并退出了，接着master进程重启新的work进程，从日志文件中也可以看出，nginx循环打印这个错误。</p>
-<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>在<code>/etc/init.d</code>目录下执行这条命令，启动tracker和storage：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo fdfs_trackerd /etc/fdfs/tracker.conf</span><br><span class="line">sudo fdfs_storaged /etc/fdfs/storage.conf</span><br></pre></td></tr></table></figure>
+<p>  一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure>
 
-<p>并将tracker 和 storage加入开机启动：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d fdfs_trackerd defaults 99</span><br><span class="line">sudo update-rc.d fdfs_storage defaults 99</span><br></pre></td></tr></table></figure>
+</div><h2 id="三、配置防火墙"><a href="#三、配置防火墙" class="headerlink" title="三、配置防火墙"></a>三、配置防火墙</h2><div class="story post-story"><p> 现在你已经在你的服务器上安装和运行了 Nginx，你需要确保你的防火墙被配置好，允许流量通过 HTTP（<code>80</code>）和 HTTPS（<code>443</code>）端口。假设你正在使用<code>UFW</code>,你可以做的是启用 ‘Nginx Full’ profile，它包含了这两个端口： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow &#x27;Nginx Full&#x27;</span><br></pre></td></tr></table></figure>
 
-<p>ps：最后的数字代表启动顺序（0~99），数字越小，优先级越高。</p>
+<p> 想要验证状态，输入： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
 
+</div><h2 id="四、安装测试"><a href="#四、安装测试" class="headerlink" title="四、安装测试"></a>四、安装测试</h2><div class="story post-story"><p> 想要测试你的新 Nginx 安装，在你的浏览器中打开<code>http://YOUR_IP</code>，你应该可以看到默认的 Nginx 加载页面。</p>
+</div><h2 id="五、nginx-配置文件结构"><a href="#五、nginx-配置文件结构" class="headerlink" title="五、nginx 配置文件结构"></a>五、nginx 配置文件结构</h2><div class="story post-story"><ul>
+<li><p>所有的 Nginx 配置文件都在<code>/etc/nginx/</code>目录下。</p>
+</li>
+<li><p>主要的 Nginx 配置文件是<code>/etc/nginx/nginx.conf</code>。</p>
+</li>
+<li><p>为每个域名创建一个独立的配置文件，便于维护服务器。你可以按照需要定义任意多的 block 文件。</p>
+</li>
+<li><p>Nginx 服务器配置文件被储存在<code>/etc/nginx/sites-available</code>目录下。在<code>/etc/nginx/sites-enabled</code>目录下的配置文件都将被 Nginx 使用。</p>
+</li>
+<li><p>最佳推荐是使用标准的命名方式。例如，如果你的域名是<code>mydomain.com</code>，那么配置文件应该被命名为<code>/etc/nginx/sites-available/mydomain.com.conf</code></p>
+</li>
+<li><p>如果你在域名服务器配置块中有可重用的配置段，把这些配置段摘出来，做成一小段可重用的配置。</p>
+</li>
+<li><p>Nginx 日志文件(access.log 和 error.log)定位在<code>/var/log/nginx/</code>目录下。推荐为每个服务器配置块，配置一个不同的<code>access</code>和<code>error</code>。</p>
+</li>
+<li><p>你可以将你的网站根目录设置在任何你想要的地方。最常用的网站根目录位置包括：</p>
+</li>
+<li><ul>
+<li><code>/home//</code></li>
+<li><code>/var/www/</code></li>
+<li><code>/var/www/html/</code></li>
+<li><code>/opt/</code></li>
+</ul>
+</li>
+</ul>
+<p>转自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/138007915">https://zhuanlan.zhihu.com/p/138007915</a></p>
 
+</div>
   </div>
   
   
@@ -2583,7 +2608,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/>http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/</a></p>
+                <p>本文永久链接是：<a href=https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/>https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/</a></p>
               
             
           </blockquote>
@@ -2611,10 +2636,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/nginx/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>nginx</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/FastDFS/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>FastDFS</p></a></div>
-  <span hidden itemprop="keywords">nginx FastDFS</span>
-
 
         
       
@@ -2626,7 +2647,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/&title=nginx+fdfs无work进程 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/&title=ubuntu20.04安装nginx - 小泽のブログ&summary="
           
           >
           
@@ -2638,7 +2659,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/&title=nginx+fdfs无work进程 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/&title=ubuntu20.04安装nginx - 小泽のブログ&summary="
           
           >
           
@@ -2650,7 +2671,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/&title=nginx+fdfs无work进程 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/&title=ubuntu20.04安装nginx - 小泽のブログ&summary="
           
           >
           
@@ -2683,20 +2704,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/05/29/2021-05-29-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>数据库三大范式</p>
-          <p class='content'>函数依赖设R(U)是属性集U上的关系式，X，Y是U的子集。
-若对于 R(U) 的任意一个可能的关系 r，r中不可能存在两个元组在 X 上的属性值相等，而在 Y 的属性值上不等。
-则称 X 函数确...</p>
-        </a>
-      
-      
-        <a class='next' href='/2021/04/02/2021-04-02-%E5%AE%89%E8%A3%85FastDFS/'>
-          <p class='title'>安装FastDFS<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='prev' href='/2021/04/02/%E5%AE%89%E8%A3%85FastDFS/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>安装FastDFS</p>
           <p class='content'>在虚拟机上配置FastDFS下载文件在用户目录leyou下创建fdfs目录，并传到该目录以下四个文件
 
 FastDFS_v5.08.tar.gz
 fastdfs-nginx-module_v1....</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/01/12/A%20Docker%20Guide%20for%20Java/'>
+          <p class='title'>A Docker Guide for Java<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>参考资料：https://www.baeldung.com/docker-java-api
+1.概述在这篇文章中，我们看一下另一个建立已久的平台的具体的API—-Java API Client ...</p>
         </a>
       
     </div>
@@ -2712,7 +2732,7 @@ fastdfs-nginx-module_v1....</p>
   
   <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2745,7 +2765,7 @@ fastdfs-nginx-module_v1....</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%8E%9F%E5%9B%A0%EF%BC%9A"><span class="toc-text">错误原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">解决方法：</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-text">一、前提条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85nginx"><span class="toc-text">二、安装nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-text">三、配置防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95"><span class="toc-text">四、安装测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">五、nginx 配置文件结构</span></a></li></ol>
     </div>
   </section>
 
@@ -2797,7 +2817,7 @@ fastdfs-nginx-module_v1....</p>
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="nginx+fdfs无work进程";
+  pdata.postTitle="ubuntu20.04安装nginx";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2907,7 +2927,7 @@ fastdfs-nginx-module_v1....</p>
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1649088499353.js"></script>
+<script src="/js/app.js?time=1649088963337.js"></script>
 
 
 
@@ -3099,7 +3119,7 @@ fastdfs-nginx-module_v1....</p>
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088499353')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088963337')</script>
 
 
 
@@ -3112,19 +3132,19 @@ fastdfs-nginx-module_v1....</p>
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1649088499353")
+        volantis.js("/js/plugins/sites.js?time=1649088963337")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1649088499353")
+        volantis.js("/js/plugins/friends.js?time=1649088963337")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1649088499353")
+        volantis.js("/js/plugins/contributors.js?time=1649088963337")
       }
     
   };
@@ -3249,7 +3269,7 @@ fastdfs-nginx-module_v1....</p>
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1649088499353");
+    return volantis.js("/js/search/hexo.js?time=1649088963337");
   }
 
   function loadSearchService() {
@@ -3540,7 +3560,7 @@ fastdfs-nginx-module_v1....</p>
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"http://example.com/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"Hexo"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/Nginx/","name":"Nginx"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2021/04/02/2021-04-02-nginx+fdfs无work进程/","name":"nginx+fdfs无work进程"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"nginx+fdfs无work进程","description":"","datePublished":"2021-04-02T14:00:00.000Z","dateModified":"2022-04-04T06:21:27.548Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2021/04/02/2021-04-02-nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/","wordCount":0,"articleSection":"Nginx","keywords":"nginx,FastDFS","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小泽のブログ","url":"https://realize-me.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://realize-me.github.io/","name":"小泽のブログ"}},{"@type":"ListItem","position":2,"item":{"@id":"https://realize-me.github.io/categories/Nginx/","name":"Nginx"}},{"@type":"ListItem","position":3,"item":{"@id":"https://realize-me.github.io/2021/04/01/ubuntu20-04安装nginx/","name":"ubuntu20.04安装nginx"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ubuntu20.04安装nginx","description":"","datePublished":"2021-04-01T03:49:59.000Z","dateModified":"2022-04-04T06:21:27.548Z","inLanguage":"zh-Hans","mainEntityOfPage":{"@type":"WebPage","@id":"https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/"},"author":{"@type":"Person","name":"realxz","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://realize-me.github.io/"},"publisher":{"@type":"Organization","name":"小泽のブログ","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://realize-me.github.io/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/","wordCount":0,"articleSection":"Nginx","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
