@@ -1,5 +1,4 @@
-#web_bg {
-      
+#page-header{
   /* 背景图像的地址（url括号里）  */
   background: url(img/bk.jpg);
   /* 背景图像不重复 */
@@ -7,3 +6,8 @@
   /* 背景图像大小 */
   background-size: cover;
 }
+/* 
+#web_bg {
+      
+
+} */
