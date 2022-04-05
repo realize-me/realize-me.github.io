@@ -1,32 +1,319 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>A Docker Guide for Java | 小泽のブログ</title><meta name="keywords" content="Docker"><meta name="author" content="realxz"><meta name="copyright" content="realxz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考资料：https:&#x2F;&#x2F;www.baeldung.com&#x2F;docker-java-api 1.概述在这篇文章中，我们看一下另一个建立已久的平台的具体的API—-Java API Client for Docker 通过这篇文章，我们理解如何连接一个正在运行的Docker守护进程的方式，还有这个API为Java开发人员提供了什么样的重要智能。 2.Maven Dependency首先，我们需要添加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Docker Guide for Java">
+<meta property="og:url" content="https://realize-me.github.io/2021/01/12/A%20Docker%20Guide%20for%20Java/index.html">
+<meta property="og:site_name" content="小泽のブログ">
+<meta property="og:description" content="参考资料：https:&#x2F;&#x2F;www.baeldung.com&#x2F;docker-java-api 1.概述在这篇文章中，我们看一下另一个建立已久的平台的具体的API—-Java API Client for Docker 通过这篇文章，我们理解如何连接一个正在运行的Docker守护进程的方式，还有这个API为Java开发人员提供了什么样的重要智能。 2.Maven Dependency首先，我们需要添加">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2021-01-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-04T06:21:27.547Z">
+<meta property="article:author" content="realxz">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://realize-me.github.io/2021/01/12/A%20Docker%20Guide%20for%20Java/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'A Docker Guide for Java',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-04 14:21:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable && theme.reward.QR_code
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小泽のブログ</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">A Docker Guide for Java</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-01-11T16:00:00.000Z" title="Created 2021-01-12 00:00:00">2021-01-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-04-04T06:21:27.547Z" title="Updated 2022-04-04 14:21:27">2022-04-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Docker/">Docker</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="A Docker Guide for Java"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>参考资料：<a target="_blank" rel="noopener" href="https://www.baeldung.com/docker-java-api">https://www.baeldung.com/docker-java-api</a></p>
+<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><div class="story post-story"><p>在这篇文章中，我们看一下另一个建立已久的平台的具体的API—-Java API Client for Docker</p>
+<p>通过这篇文章，我们理解如何连接一个正在运行的Docker守护进程的方式，还有这个API为Java开发人员提供了什么样的重要智能。</p>
+</div><h2 id="2-Maven-Dependency"><a href="#2-Maven-Dependency" class="headerlink" title="2.Maven Dependency"></a>2.Maven Dependency</h2><div class="story post-story"><p>首先，我们需要添加一个主要的依赖到我们的pom.xml文件中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.github.docker-java&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;docker-java&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.0.14&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
+<p>写这文章的时候，这个API的最新版本是3.0.14。每个发行版可以从<a target="_blank" rel="noopener" href="https://github.com/docker-java/docker-java/releases">the github release page</a>或者 <a target="_blank" rel="noopener" href="https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22com.github.docker-java%22%20AND%20a%3A%22docker-java%22">the maven repository</a>浏览。</p>
+</div><h2 id="3-使用Docker-Client"><a href="#3-使用Docker-Client" class="headerlink" title="3.使用Docker Client"></a>3.使用Docker Client</h2><div class="story post-story"><p>DockerClient 是一个我们在Docker 引擎&#x2F;守护进程和我们应用程序之间建立连接的地方。</p>
+<p>默认情况下，Docker 守护进程只能在<font color="red"><em>unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock</em> file</font>访问。在本地，我们可以通过监听<strong>the Unix socket</strong>与Doocker引擎交流，并且这样无需任何配置。</p>
+<p>在这，我可使用<em>DockerClientBuilder</em>类去创建一个连接，这个连接使用的是默认的配置：</p>
+<blockquote>
+<p><font color="blue">DockerClient dockerClient &#x3D; DockerClientBuilder.getInstance().build();</font></p>
+</blockquote>
+<p>简单的，我们可以使用以下两步打开一个连接：</p>
+<blockquote>
+<font color="blue">
+DefaultDockerClientConfig.Builder config 
+= DefaultDockerClientConfig.createDefaultConfigBuilder();</font>
 
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+<p><font color="blue">DockerClient dockerClient &#x3D; DockerClientBuilder<br>.getInstance(config)<br>.build();<br></font></p>
+</blockquote>
+<p>由于引擎可以依赖其他特征，客户端也可以在不同条件下配置。</p>
+<p>例如，the builder 接受一个server URL，如果引擎在端口2375可用的话，我们能更新连接值。</p>
+<blockquote>
+<font color="blue">
+DockerClient dockerClient
+= DockerClientBuilder.getInstance("tcp://docker.baeldung.com:2375").build();
+</font>
+</blockquote>
+<p>注意，我们需要在<font color="red">连接字符串 (connection string)</font>前加上<font color="purple">unix:&#x2F;&#x2F;</font> 或者 <font color="purple">tcp:&#x2F;&#x2F;</font>，这依赖于<font color="red">连接类型 (connection type)</font>。</p>
+<p>进一步，我们能以一个更高级的配置，这个配置使用<em>DefaultDockerClientConfig</em>类。</p>
+<blockquote>
+<p>DefaultDockerClientConfig config<br> &#x3D; DefaultDockerClientConfig.createDefaultConfigBuilder()<br>   .withRegistryEmail(“<a href="mailto:&#x69;&#110;&#102;&#x6f;&#64;&#98;&#97;&#101;&#108;&#100;&#117;&#110;&#x67;&#x2e;&#x63;&#x6f;&#x6d;">&#x69;&#110;&#102;&#x6f;&#64;&#98;&#97;&#101;&#108;&#100;&#117;&#110;&#x67;&#x2e;&#x63;&#x6f;&#x6d;</a>“)<br>    .withRegistryPassword(“baeldung”)<br>    .withRegistryUsername(“baeldung”)<br>    .withDockerCertPath(“&#x2F;home&#x2F;baeldung&#x2F;.docker&#x2F;certs”)<br>    .withDockerConfig(“&#x2F;home&#x2F;baeldung&#x2F;.docker&#x2F;“)<br>    .withDockerTlsVerify(“1”)<br>    .withDockerHost(“tcp:&#x2F;&#x2F;docker.baeldung.com:2376”).build();</p>
+<p>DockerClient dockerClient &#x3D; DockerClientBuilder.getInstance(config).build();</p>
+</blockquote>
+<p>同样地，我们可以使用Properties执行相同的方法。</p>
+<blockquote>
+<p>Properties properties &#x3D; new Properties();<br>properties.setProperty(“registry.email”, “<a href="mailto:&#x69;&#x6e;&#102;&#111;&#64;&#98;&#97;&#x65;&#x6c;&#100;&#117;&#110;&#x67;&#x2e;&#x63;&#x6f;&#x6d;">&#x69;&#x6e;&#102;&#111;&#64;&#98;&#97;&#x65;&#x6c;&#100;&#117;&#110;&#x67;&#x2e;&#x63;&#x6f;&#x6d;</a>“);<br>properties.setProperty(“registry.password”, “baeldung”);<br>properties.setProperty(“registry.username”, “baaldung”);<br>properties.setProperty(“DOCKER_CERT_PATH”, “&#x2F;home&#x2F;baeldung&#x2F;.docker&#x2F;certs”);<br>properties.setProperty(“DOCKER_CONFIG”, “&#x2F;home&#x2F;baeldung&#x2F;.docker&#x2F;“);<br>properties.setProperty(“DOCKER_TLS_VERIFY”, “1”);<br>properties.setProperty(“DOCKER_HOST”, “tcp:&#x2F;&#x2F;docker.baeldung.com:2376”);</p>
+<p>DefaultDockerClientConfig config<br>  &#x3D; DefaultDockerClientConfig.createDefaultConfigBuilder()<br>    .withProperties(properties).build();</p>
+<p>DockerClient dockerClient &#x3D; DockerClientBuilder.getInstance(config).build();</p>
+</blockquote>
+<p>除非我们在源代码里面配置引擎设置，否则另一个选择是设置想符合的环境变量，以至于我们只考虑项目中DockerClient的默认的实例化。</p>
+<blockquote>
+<p>export DOCKER_CERT_PATH&#x3D;&#x2F;home&#x2F;baeldung&#x2F;.docker&#x2F;certs<br>export DOCKER_CONFIG&#x3D;&#x2F;home&#x2F;baeldung&#x2F;.docker&#x2F;<br>export DOCKER_TLS_VERIFY&#x3D;1<br>export DOCKER_HOST&#x3D;tcp:&#x2F;&#x2F;docker.baeldung.com:2376</p>
+</blockquote>
+</div><h2 id="4-容器管理"><a href="#4-容器管理" class="headerlink" title="4.容器管理"></a>4.容器管理</h2><div class="story post-story"><p>这个API给予我们关于容器管理的各种各样的选择。让我们看看每一个。</p>
+<h3 id="4-1容器列表-List-Container"><a href="#4-1容器列表-List-Container" class="headerlink" title="4.1容器列表 List Container"></a>4.1容器列表 List Container</h3><p>现在，我们已经建立了连接，我们能列出位于Docker主机上的所有正在运行的容器。</p>
+<blockquote>
+<p><font color="blue">List<Container> containers &#x3D; dockerClient.listContainersCmd().exec();</font></p>
+</blockquote>
+<p>假如显示正在运行的容器不满足要求，我们能使用选项查询容器。</p>
+<blockquote>
+<p>List<Container> containers &#x3D; dockerClient.listContainersCmd()<br>.withShowSize(true)<br>  .withShowAll(true)<br>  .withStatusFilter(“exited”).exec()</p>
+</blockquote>
+<p>它就等价于：</p>
+<blockquote>
+<p>$ docker ps -a -s -f status&#x3D;exited<br>or<br> $ docker container ls -a -s -f status&#x3D;exited</p>
+</blockquote>
+<h3 id="4-2创建容器"><a href="#4-2创建容器" class="headerlink" title="4.2创建容器"></a>4.2创建容器</h3><p>创建容器由<em>createContainerCmd</em>方法提供。我们可以使用以“with”为前缀的方法进行更复杂的声明。</p>
+<p>假定我们有一个docker create 命令，定义了一个依赖于主机的MongoDB容器并在容器内部监听27017端口：</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker create --name mongo \</span><br><span class="line">  --hostname=baeldung \</span><br><span class="line">  -e MONGO_LATEST_VERSION=<span class="number">3.6</span> \</span><br><span class="line">  -p <span class="number">9999</span>:<span class="number">27017</span> \</span><br><span class="line">  -v /Users/baeldung/mongo/data/db:/data/db \</span><br><span class="line">  mongo:<span class="number">3.6</span> --bind_ip_all</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>我们能以变成的方式启动同样的容器，并对其进行配置：</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CreateContainerResponse</span> <span class="variable">container</span></span><br><span class="line">  <span class="operator">=</span> dockerClient.createContainerCmd(<span class="string">&quot;mongo:3.6&quot;</span>)</span><br><span class="line">    .withCmd(<span class="string">&quot;--bind_ip_all&quot;</span>)</span><br><span class="line">    .withName(<span class="string">&quot;mongo&quot;</span>)</span><br><span class="line">    .withHostName(<span class="string">&quot;baeldung&quot;</span>)</span><br><span class="line">    .withEnv(<span class="string">&quot;MONGO_LATEST_VERSION=3.6&quot;</span>)</span><br><span class="line">    .withPortBindings(PortBinding.parse(<span class="string">&quot;9999:27017&quot;</span>))</span><br><span class="line">    .withBinds(Bind.parse(<span class="string">&quot;/Users/baeldung/mongo/data/db:/data/db&quot;</span>)).exec();</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="4-3-start、stop和kill-container"><a href="#4-3-start、stop和kill-container" class="headerlink" title="4.3 start、stop和kill container"></a>4.3 start、stop和kill container</h3><p>一旦我们创建了容器，我们就能通过容器名字name或者容器id，启动start、停止stop和杀死kill这个容器：</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dockerClient.startContainerCmd(container.getId()).exec();</span><br><span class="line"></span><br><span class="line">dockerClient.stopContainerCmd(container.getId()).exec();</span><br><span class="line"></span><br><span class="line">dockerClient.killContainerCmd(container.getId()).exec();</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="4-4-查看inspect-容器"><a href="#4-4-查看inspect-容器" class="headerlink" title="4.4 查看inspect 容器"></a>4.4 查看inspect 容器</h3><p><em>inspectContainerCmd</em> 方法有一个String类型的参数，这个参数指明容器的name或者id。使用这个方法，我们能直接地观察容器的元数据metadate：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">InspectContainerResponse container </span><br><span class="line">  = dockerClient.inspectContainerCmd(container.getId()).exec();</span><br></pre></td></tr></table></figure>
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+<p>4.5 Snapshot 快照 容器</p>
+<p>类似与<em>docker commit</em> 命令，我们能使用<em>commitCmd</em>方法创建一个新的镜像。</p>
+<p>在我们的例子中，这个场景是，我们先前运行一个 <strong>alpine:3.6</strong>容器，它的id是“***3464bb547f88***”，并且在它的顶部安装了git。</p>
+<p>现在，我们想从这个容器中创建一个新的镜像快照：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String snapshotId = dockerClient.commitCmd(&quot;3464bb547f88&quot;)</span><br><span class="line">  .withAuthor(&quot;Baeldung &lt;info@baeldung.com&gt;&quot;)</span><br><span class="line">  .withEnv(&quot;SNAPSHOT_YEAR=2018&quot;)</span><br><span class="line">  .withMessage(&quot;add git support&quot;)</span><br><span class="line">  .withCmd(&quot;git&quot;, &quot;version&quot;)</span><br><span class="line">  .withRepository(&quot;alpine&quot;)</span><br><span class="line">  .withTag(&quot;3.6.git&quot;).exec();</span><br></pre></td></tr></table></figure>
+
+<p>由于与git捆绑的新镜像仍保留在主机上，我们能在Docker主机上搜索到它：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker image ls alpine --format &quot;table &#123;&#123;.Repository&#125;&#125; &#123;&#123;.Tag&#125;&#125;&quot;</span><br><span class="line">REPOSITORY TAG</span><br><span class="line">alpine     3.6.git</span><br></pre></td></tr></table></figure>
+
+</div><h2 id="5-镜像管理"><a href="#5-镜像管理" class="headerlink" title="5.镜像管理"></a>5.镜像管理</h2><div class="story post-story"><p>我们提供了一些适用的命令来管理镜像操作。</p>
+<h3 id="5-1列出镜像"><a href="#5-1列出镜像" class="headerlink" title="5.1列出镜像"></a>5.1列出镜像</h3><p>列出Docker主机上的所有镜像（包括悬挂镜像），我们需要应用的是<em>listImagesCmd</em>命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Image&gt; images = dockerClient.listImagesCmd().exec();</span><br></pre></td></tr></table></figure>
+
+<p>如果在Docker主机上我们有两个镜像，我们应该在运行时获得它们的***Image***对象。我们要寻找的镜像是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker image ls --format &quot;table &#123;&#123;.Repository&#125;&#125; &#123;&#123;.Tag&#125;&#125;&quot;</span><br><span class="line">REPOSITORY TAG</span><br><span class="line">alpine     3.6</span><br><span class="line">mongo      3.6</span><br></pre></td></tr></table></figure>
+
+<p>接下来，要看中间镜像，我们需要明确地请求它：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Image&gt; images = dockerClient.listImagesCmd()</span><br><span class="line">  .withShowAll(true).exec();</span><br></pre></td></tr></table></figure>
+
+<p>如果在这个情况下，只显示悬挂镜像，必须考虑<em>withDanglingFilter</em>方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Image&gt; images = dockerClient.listImagesCmd()</span><br><span class="line">  .withDanglingFilter(true).exec();</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2构建镜像"><a href="#5-2构建镜像" class="headerlink" title="5.2构建镜像"></a>5.2构建镜像</h3><p>我们专注于使用API方式构建镜像。用<strong>buildImageCmd</strong>方法从Dockerfile中构建镜像。在我们的项目中，我们已经有了一个Dockerfile文件，这个Dockerfile定义了一个 安装了git的Alpine镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">FROM alpine:3.6</span><br><span class="line"></span><br><span class="line">RUN apk --update add git openssh &amp;&amp; \</span><br><span class="line">  rm -rf /var/lib/apt/lists/* &amp;&amp; \</span><br><span class="line">  rm /var/cache/apk/*</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;git&quot;]</span><br><span class="line">CMD [&quot;--help&quot;]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在构建进程开始之前，新镜像无需使用缓存就能被创建，在任何情况下，docker 引擎将尝试拉取较新版本的<em>alpine:3.6</em>。如果一切顺利，最终我们应该看到具有给定名称的<strong>alpine:git</strong>镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String imageId = dockerClient.buildImageCmd()</span><br><span class="line">  .withDockerfile(new File(&quot;path/to/Dockerfile&quot;))</span><br><span class="line">  .withPull(true)</span><br><span class="line">  .withNoCache(true)</span><br><span class="line">  .withTag(&quot;alpine:git&quot;)</span><br><span class="line">  .exec(new BuildImageResultCallback())</span><br><span class="line">  .awaitImageId();</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3查看镜像"><a href="#5-3查看镜像" class="headerlink" title="5.3查看镜像"></a>5.3查看镜像</h3><p>使用<em>inspectImageCmd</em>方法，我们可以查看镜像的底层信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">InspectImageResponse</span> <span class="variable">image</span> </span><br><span class="line">  <span class="operator">=</span> dockerClient.inspectImageCmd(<span class="string">&quot;161714540c41&quot;</span>).exec();</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4给图像版本号"><a href="#5-4给图像版本号" class="headerlink" title="5.4给图像版本号"></a>5.4给图像版本号</h3><p>使用<em>docker</em> <em>tag</em> 命令给我们的镜像添加版本号是非常简单的，这个API也不例外。我们可以使用<em>tagImageCmd</em> 命令来完成同样的目的。使用git将镜像id为*<strong>161714540c41*<strong>的镜像标记到</strong>baeldung&#x2F;alpine</strong>库中，请执行以下操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String imageId = &quot;161714540c41&quot;;</span><br><span class="line">String repository = &quot;baeldung/alpine&quot;;</span><br><span class="line">String tag = &quot;git&quot;;</span><br><span class="line"></span><br><span class="line">dockerClient.tagImageCmd(imageId, repository, tag).exec();</span><br></pre></td></tr></table></figure>
+
+<p>我们可以列出最新创建的镜像，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker image <span class="built_in">ls</span> --format <span class="string">&quot;table &#123;&#123;.Repository&#125;&#125; &#123;&#123;.Tag&#125;&#125;&quot;</span></span><br><span class="line">REPOSITORY      TAG</span><br><span class="line">baeldung/alpine git</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5推送镜像"><a href="#5-5推送镜像" class="headerlink" title="5.5推送镜像"></a>5.5推送镜像</h3><p>在推送镜像到注册服务之前，docker client必须配置，以便与这个服务协作，因为与注册服务工作需要提前获取授权。</p>
+<p>因为假定我们的客户端配置了Docker Hub，所以我们可以将<em>baeldung&#x2F;alpine</em>镜像推送到baeldung DockerHub账户上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dockerClient.pushImageCmd(&quot;baeldung/alpine&quot;)</span><br><span class="line">  .withTag(&quot;git&quot;)</span><br><span class="line">  .exec(new PushImageResultCallback())</span><br><span class="line">  .awaitCompletion(90, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<p>我们必须容忍持续的进程。在这个例子中，我们等待了90秒。</p>
+<h3 id="5-6拉取镜像"><a href="#5-6拉取镜像" class="headerlink" title="5.6拉取镜像"></a>5.6拉取镜像</h3><p>从注册服务中拉取镜像，我们利用<em>pullImageCmd</em>方法。另外，如果镜像是从私有库中拉取，客户端必须知道我们的证书，否则这个过程就会停止并报错。等同于拉取镜像，我们指定一个回调和一个固定的周期拉取镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dockerClient.pullImageCmd(&quot;baeldung/alpine&quot;)</span><br><span class="line">  .withTag(&quot;git&quot;)</span><br><span class="line">  .exec(new PullImageResultCallback())</span><br><span class="line">  .awaitCompletion(30, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<p>拉取完成后，检查Docker主机中是否存在我们提及的镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker images baeldung/alpine --format &quot;table &#123;&#123;.Repository&#125;&#125; &#123;&#123;.Tag&#125;&#125;&quot;</span><br><span class="line">REPOSITORY      TAG</span><br><span class="line">baeldung/alpine git</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-7删除镜像"><a href="#5-7删除镜像" class="headerlink" title="5.7删除镜像"></a>5.7删除镜像</h3><p>剩下的函数中的另一个简单的函数是<em>removeImageCmd</em>方法。我们可以使用它的短或长ID删除镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dockerClient.removeImageCmd(&quot;beaccc8687ae&quot;).exec();</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-8在注册中搜索"><a href="#5-8在注册中搜索" class="headerlink" title="5.8在注册中搜索"></a>5.8在注册中搜索</h3><p>从Docer Hub上搜索镜像，客户端附带一个<em>searchImagesCmd</em>方法，这个方法要指定一个字符串类型的值，这个值指示了要搜索的词。在这，我们探索Docker Hub中包含‘java’的镜像。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;SearchItem&gt; items = dockerClient.searchImagesCmd(&quot;Java&quot;).exec();</span><br></pre></td></tr></table></figure>
+
+<p>输出返回的<em>SearchItem</em>对象中列出了前25过热相关的镜像。</p>
+</div><h2 id="6-卷管理"><a href="#6-卷管理" class="headerlink" title="6.卷管理"></a>6.卷管理</h2><div class="story post-story"><p>如果java项目需要使用卷与Docker进行交互，我们也应该重视这一章节。简短地，我们查看由Docker Java API提供的卷的基本技术。</p>
+<h3 id="6-1列出卷"><a href="#6-1列出卷" class="headerlink" title="6.1列出卷"></a>6.1列出卷</h3><p>包括有名的和无名的所有可用的卷都被列出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">ListVolumesResponse volumesResponse = dockerClient.listVolumesCmd().exec();</span><br><span class="line">List&lt;InspectVolumeResponse&gt; volumes = volumesResponse.getVolumes();</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-2查看卷"><a href="#6-2查看卷" class="headerlink" title="6.2查看卷"></a>6.2查看卷</h3><p><em>inspectVolumeCmd</em>方法是显示一个卷详细信息的窗体。我们通过指定卷id查看卷：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">InspectVolumeResponse volume </span><br><span class="line">  = dockerClient.inspectVolumeCmd(&quot;0220b87330af5&quot;).exec();</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3创建卷"><a href="#6-3创建卷" class="headerlink" title="6.3创建卷"></a>6.3创建卷</h3><p>这个API提供了两个不同的选项进行创建卷。无参数的<em>createVolumeCmd</em>方法创建一个卷，这个卷的名字由Docker生成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CreateVolumeResponse unnamedVolume = dockerClient.createVolumeCmd().exec();</span><br></pre></td></tr></table></figure>
+
+<p>要不使用默认的行为，这个<em>withName</em>的方法允许我们给卷命名：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CreateVolumeResponse</span> <span class="variable">namedVolume</span> </span><br><span class="line">  <span class="operator">=</span> dockerClient.createVolumeCmd().withName(<span class="string">&quot;myNamedVolume&quot;</span>).exec();</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4删除卷"><a href="#6-4删除卷" class="headerlink" title="6.4删除卷"></a>6.4删除卷</h3><p>我们可以使用<em>removeVolumeCmd</em>方法从Docker主机中直观地删除一个卷。要注意的是，如果一个卷正在被容器使用，我们不能删除这个卷，这点很重要。我们从卷列表中删除卷，<em>myNamedVolume</em>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dockerClient.removeVolumeCmd(&quot;myNamedVolume&quot;).exec();</span><br></pre></td></tr></table></figure>
+
+</div><h2 id="7-网络管理"><a href="#7-网络管理" class="headerlink" title="7.网络管理"></a>7.网络管理</h2><div class="story post-story"><p>我们最后一节是关于用API管理网络任务。</p>
+<h3 id="7-1列出网络"><a href="#7-1列出网络" class="headerlink" title="7.1列出网络"></a>7.1列出网络</h3><p>我们可以使用一种传统的API方法，列出网络单元的列表，从列表开始：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Network&gt; networks = dockerClient.listNetworksCmd().exec();</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2创建网络"><a href="#7-2创建网络" class="headerlink" title="7.2创建网络"></a>7.2创建网络</h3><p>执行<em>createNetworkCmd</em>命令就等价于<em>docker network create</em> c命令。如果我们有三部分或者一个客户网络驱动，<em>withDriver</em>方法能接受这些除了嵌入驱动。在我们的例子中，让我们创建一个桥接网络，它的名字是<em>baeldung</em>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CreateNetworkResponse</span> <span class="variable">networkResponse</span> </span><br><span class="line">  <span class="operator">=</span> dockerClient.createNetworkCmd()</span><br><span class="line">    .withName(<span class="string">&quot;baeldung&quot;</span>)</span><br><span class="line">    .withDriver(<span class="string">&quot;bridge&quot;</span>).exec();</span><br></pre></td></tr></table></figure>
+
+<p>更进一步，使用默认设置创建一个网络单元不能解决问题，我们可以应用其他辅助方法来构建高级网络。因此，用自定义值覆盖默认子网络：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CreateNetworkResponse networkResponse = dockerClient.createNetworkCmd()</span><br><span class="line">  .withName(&quot;baeldung&quot;)</span><br><span class="line">  .withIpam(new Ipam()</span><br><span class="line">    .withConfig(new Config()</span><br><span class="line">    .withSubnet(&quot;172.36.0.0/16&quot;)</span><br><span class="line">    .withIpRange(&quot;172.36.5.0/24&quot;)))</span><br><span class="line">  .withDriver(&quot;bridge&quot;).exec();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用docker命令运行的相同命令是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker network create \</span><br><span class="line">  --subnet=172.36.0.0/16 \</span><br><span class="line">  --ip-range=172.36.5.0/24 \</span><br><span class="line">  baeldung</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3查看网络"><a href="#7-3查看网络" class="headerlink" title="7.3查看网络"></a>7.3查看网络</h3><p>展示网络的底层详细信息也包含在API中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Network network </span><br><span class="line">  = dockerClient.inspectNetworkCmd().withNetworkId(&quot;baeldung&quot;).exec();</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4删除网络"><a href="#7-4删除网络" class="headerlink" title="7.4删除网络"></a>7.4删除网络</h3><p>我们能使用<em>removeNetworkCmd</em>方法根据网络名称和id安全地删除网络单元：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dockerClient.removeNetworkCmd(<span class="string">&quot;baeldung&quot;</span>).exec();</span><br></pre></td></tr></table></figure>
+
+</div><h2 id="8总结"><a href="#8总结" class="headerlink" title="8总结"></a>8总结</h2><div class="story post-story"><p>在这个广泛的教程中，我们探索<em>Java Docker API Client</em>中各种各样的功能，以及用于部署和管理场景的部署方法。</p>
+
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">realxz</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://realize-me.github.io/2021/01/12/A%20Docker%20Guide%20for%20Java/">https://realize-me.github.io/2021/01/12/A%20Docker%20Guide%20for%20Java/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Docker/">Docker</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">ubuntu20.04安装nginx</div></div></a></div><div class="next-post pull-right"><a href="/2021/01/10/%E5%B0%86Docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0DockerHub/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">将镜像发布到DockerHub</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/01/03/Docker/" title="Docker常用命令"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-03</div><div class="title">Docker常用命令</div></div></a></div><div><a href="/2021/01/09/Docker%E5%AE%B9%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE/" title="Docker容器之间同步数据"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-09</div><div class="title">Docker容器之间同步数据</div></div></a></div><div><a href="/2021/01/08/Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/" title="Docker匿名挂载和具名挂载"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-08</div><div class="title">Docker匿名挂载和具名挂载</div></div></a></div><div><a href="/2021/01/10/%E5%B0%86Docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0DockerHub/" title="将镜像发布到DockerHub"><img class="cover" src="/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-10</div><div class="title">将镜像发布到DockerHub</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">realxz</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1.概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Maven-Dependency"><span class="toc-number">2.</span> <span class="toc-text">2.Maven Dependency</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8Docker-Client"><span class="toc-number">3.</span> <span class="toc-text">3.使用Docker Client</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">4.容器管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E5%AE%B9%E5%99%A8%E5%88%97%E8%A1%A8-List-Container"><span class="toc-number">4.1.</span> <span class="toc-text">4.1容器列表 List Container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text">4.2创建容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-start%E3%80%81stop%E5%92%8Ckill-container"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 start、stop和kill container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%9F%A5%E7%9C%8Binspect-%E5%AE%B9%E5%99%A8"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 查看inspect 容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%95%9C%E5%83%8F%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5.镜像管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E5%88%97%E5%87%BA%E9%95%9C%E5%83%8F"><span class="toc-number">5.1.</span> <span class="toc-text">5.1列出镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="toc-number">5.2.</span> <span class="toc-text">5.2构建镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F"><span class="toc-number">5.3.</span> <span class="toc-text">5.3查看镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4%E7%BB%99%E5%9B%BE%E5%83%8F%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">5.4.</span> <span class="toc-text">5.4给图像版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5%E6%8E%A8%E9%80%81%E9%95%9C%E5%83%8F"><span class="toc-number">5.5.</span> <span class="toc-text">5.5推送镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F"><span class="toc-number">5.6.</span> <span class="toc-text">5.6拉取镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F"><span class="toc-number">5.7.</span> <span class="toc-text">5.7删除镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8%E5%9C%A8%E6%B3%A8%E5%86%8C%E4%B8%AD%E6%90%9C%E7%B4%A2"><span class="toc-number">5.8.</span> <span class="toc-text">5.8在注册中搜索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%8D%B7%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">6.卷管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1%E5%88%97%E5%87%BA%E5%8D%B7"><span class="toc-number">6.1.</span> <span class="toc-text">6.1列出卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2%E6%9F%A5%E7%9C%8B%E5%8D%B7"><span class="toc-number">6.2.</span> <span class="toc-text">6.2查看卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3%E5%88%9B%E5%BB%BA%E5%8D%B7"><span class="toc-number">6.3.</span> <span class="toc-text">6.3创建卷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4%E5%88%A0%E9%99%A4%E5%8D%B7"><span class="toc-number">6.4.</span> <span class="toc-text">6.4删除卷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">7.网络管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1%E5%88%97%E5%87%BA%E7%BD%91%E7%BB%9C"><span class="toc-number">7.1.</span> <span class="toc-text">7.1列出网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2%E5%88%9B%E5%BB%BA%E7%BD%91%E7%BB%9C"><span class="toc-number">7.2.</span> <span class="toc-text">7.2创建网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C"><span class="toc-number">7.3.</span> <span class="toc-text">7.3查看网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4%E5%88%A0%E9%99%A4%E7%BD%91%E7%BB%9C"><span class="toc-number">7.4.</span> <span class="toc-text">7.4删除网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">8总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2022/04/04/hello-world/" title="Hello World">Hello World</a><time datetime="2022-04-04T12:44:51.070Z" title="Created 2022-04-04 20:44:51">2022-04-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/06/01/JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/" title="JVM架构图">JVM架构图</a><time datetime="2021-06-01T08:57:50.000Z" title="Created 2021-06-01 16:57:50">2021-06-01</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/05/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/" title="数据库三大范式">数据库三大范式</a><time datetime="2021-05-29T07:05:32.000Z" title="Created 2021-05-29 15:05:32">2021-05-29</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/" title="nginx+fdfs无work进程">nginx+fdfs无work进程</a><time datetime="2021-04-02T14:00:00.000Z" title="Created 2021-04-02 22:00:00">2021-04-02</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/04/02/%E5%AE%89%E8%A3%85FastDFS/" title="安装FastDFS">安装FastDFS</a><time datetime="2021-04-02T07:44:14.000Z" title="Created 2021-04-02 15:44:14">2021-04-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By realxz</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

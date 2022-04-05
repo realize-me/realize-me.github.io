@@ -1,7 +1,275 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>小泽のブログ</title><meta name="author" content="realxz"><meta name="copyright" content="realxz"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="小泽のブログ">
+<meta property="og:url" content="https://realize-me.github.io/index.html">
+<meta property="og:site_name" content="小泽のブログ">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="realxz">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://realize-me.github.io/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '小泽のブログ',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-04-05 21:24:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小泽のブログ</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">小泽のブログ</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2022/04/04/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-04-04T12:44:51.070Z" title="Created 2022-04-04 20:44:51">2022-04-04</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/01/JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/" title="JVM架构图">JVM架构图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-01T08:57:50.000Z" title="Created 2021-06-01 16:57:50">2021-06-01</time></span></div><div class="content">JVM 架构图如下：
+类加载器双亲委派机制
+当类加载器收到加载请求
+将这个类加载请求委托给父类加载器去完成，一直向上委托，直到根加载器（启动类加载器）
+启动类加载器检查是否能加载这个类，能加载就结束，使用当前的类加载器，否则抛出异常（Class not found），通知子类加载器加载
+重复步骤3
+
+native使用 native 关键字修饰的 java 方法，表示已超出 java 的作用域范围，会调用 C 语言库。
+进入本地方法栈
+调用本地方法接口 JNI
+JNI 的作用是扩展 Java 的使用，融合不同的编程语言为 Java 所用
+方法区方法区被所有线程共享，所有字段和方法字节码，以及一些特殊方法，如构造函数，接口也在此定义，简单说，所有定义的方法的信息都保存在该区域，此区域属于共享区间。
+
+参考资料：
+狂神说，双亲委派机制：https://www.bilibili.com/video/BV1iJ411d7jS?p=3&amp;spm_id_from=pageDriver
+
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/05/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/" title="数据库三大范式">数据库三大范式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-05-29T07:05:32.000Z" title="Created 2021-05-29 15:05:32">2021-05-29</time></span></div><div class="content">函数依赖设R(U)是属性集U上的关系式，X，Y是U的子集。
+若对于 R(U) 的任意一个可能的关系 r，r中不可能存在两个元组在 X 上的属性值相等，而在 Y 的属性值上不等。
+则称 X 函数确定 Y ， 或 Y 函数依赖于 X ，记作 :
+$$X \rightarrow Y$$
+平凡函数依赖$$X \rightarrow Y , Y \subseteq X$$
+即Y函数依赖于X，并且Y含于X。
+非平凡函数依赖$$X \rightarrow Y , Y \not\subseteq X$$
+即Y函数依赖于X，但是Y不含于X。
+完全函数依赖在R(U)中，如果$$X \rightarrow Y ,且对于X的任何一个真子集X’,都有X’ \not\rightarrow Y$$则称Y对于X完全函数依赖，记作：$$X \xrightarrow F Y$$
+部分函数依赖在R(U)中，如果$$X \rightarrow Y ,但是Y不完全函数依赖于X$$则称Y对X的部分函数依赖。
+码候选码设K为R&lt;U,F&gt;中的属性或属性组合，U完全函数依赖于K，即$$K \xrightarrow F U$ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/" title="nginx+fdfs无work进程">nginx+fdfs无work进程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-04-02T14:00:00.000Z" title="Created 2021-04-02 22:00:00">2021-04-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Nginx/">Nginx</a></span></div><div class="content">问题描述：nginx 按装fastdfs-nginx-module模块后，启动nginx，然后发现有两个master进程，没有work进程。
+搜索了一圈，也没发现有价值的信息。重装了几次nginx且为安装fdfs模块，这个问题依旧存在。。
+查看nginx的错误日志发现，work进程因为某种原因异常退出了。
+123456782021/04/02 22:20:33 [alert] 34290#0: worker process 44752 exited on signal 11 (core dumped)ngx_http_fastdfs_process_init pid=447722021/04/02 22:20:36 [alert] 34290#0: worker process 44772 exited on signal 11 (core dumped)ngx_http_fastdfs_process_init pid=447992021/04/02 22:20:40 [alert] 34290#0: worker process 44799 exited on signal 11  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/04/02/%E5%AE%89%E8%A3%85FastDFS/" title="安装FastDFS">安装FastDFS</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-04-02T07:44:14.000Z" title="Created 2021-04-02 15:44:14">2021-04-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/FastDFS/">FastDFS</a></span></div><div class="content">在虚拟机上配置FastDFS下载文件在用户目录leyou下创建fdfs目录，并传到该目录以下四个文件
+
+FastDFS_v5.08.tar.gz
+fastdfs-nginx-module_v1.16.tar.gz
+libevent-2.0.22-stable.tar.gz
+libfastcommon-master.zip
+
+安装以下内容安装gcc依赖
+1$ yum -y install gcc
+
+安装unzip工具，用于对压缩包进行解压
+1$ yum install -y unzip zip
+
+安装libevent
+1$ yum -y install libevent
+
+安装Nginx所需依赖
+1$ yum -y install pcre pcre-devel zlib zlib-devel openssl openssl-devel
+
+安装libfastcommon-master解压
+1$ unzip libfastcommon-master.zip
+
+在libfastcommon-master目录下使用make命令安装
+1$ ./make.sh &amp;&amp; ./make. ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/04/01/ubuntu20-04%E5%AE%89%E8%A3%85nginx/" title="ubuntu20.04安装nginx">ubuntu20.04安装nginx</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-04-01T03:49:59.000Z" title="Created 2021-04-01 11:49:59">2021-04-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Nginx/">Nginx</a></span></div><div class="content">一、前提条件 在继续之前，保证以 sudo 用户身份登录，并且你不能运行 Apache 或者 其他处理进程在80端口和443端口。
+二、安装nginx Nginx 在默认的 Ubuntu 源仓库中可用。想要安装它，运行下面的命令： 
+12sudo apt updatesudo apt install nginx
+
+  一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它： 
+1sudo systemctl status nginx
+
+三、配置防火墙 现在你已经在你的服务器上安装和运行了 Nginx，你需要确保你的防火墙被配置好，允许流量通过 HTTP（80）和 HTTPS（443）端口。假设你正在使用UFW,你可以做的是启用 ‘Nginx Full’ profile，它包含了这两个端口： 
+1sudo ufw allow &#x27;Nginx Full&#x27;
+
+ 想要验证状态，输入： 
+1sudo ufw status
+
+四、安装测试 想要测试你的新 Nginx 安装，在你的浏览器中打开http://YOUR_IP，你应该可以看到默认的 Nginx 加载页面。 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/01/12/A%20Docker%20Guide%20for%20Java/" title="A Docker Guide for Java">A Docker Guide for Java</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-01-11T16:00:00.000Z" title="Created 2021-01-12 00:00:00">2021-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Docker/">Docker</a></span></div><div class="content">参考资料：https://www.baeldung.com/docker-java-api
+1.概述在这篇文章中，我们看一下另一个建立已久的平台的具体的API—-Java API Client for Docker
+通过这篇文章，我们理解如何连接一个正在运行的Docker守护进程的方式，还有这个API为Java开发人员提供了什么样的重要智能。
+2.Maven Dependency首先，我们需要添加一个主要的依赖到我们的pom.xml文件中：
+12345&lt;dependency&gt;    &lt;groupId&gt;com.github.docker-java&lt;/groupId&gt;    &lt;artifactId&gt;docker-java&lt;/artifactId&gt;    &lt;version&gt;3.0.14&lt;/version&gt;&lt;/dependency&gt;
+
+写这文章的时候，这个API的最新版本是3.0.14。每个发行版可以从the github release page或者 the maven repository浏览。 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/01/10/%E5%B0%86Docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0DockerHub/" title="将镜像发布到DockerHub">将镜像发布到DockerHub</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-01-09T16:00:00.000Z" title="Created 2021-01-10 00:00:00">2021-01-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Docker/">Docker</a></span></div><div class="content">步骤1：在DockerHub上注册帐号。
+步骤2：本地登录DockerHub帐号
+
+docker login
+
+步骤3：使用docker tag命令将镜像重新命令并设置版本号
+docker tag命令使用方式：
+
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+
+如果要发布镜像到DockerHub，则TARGET_IMAGE的格式为 namespace&#x2F;imagename。
+namespace就是DockerHub的用户名
+步骤4：使用命令提交镜像
+
+docker push TARGET_IMAGE[:TAG]
+
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/01/09/Docker%E5%AE%B9%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE/" title="Docker容器之间同步数据">Docker容器之间同步数据</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-01-08T16:00:00.000Z" title="Created 2021-01-09 00:00:00">2021-01-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Docker/">Docker</a></span></div><div class="content">首先启动一个名为docker01的容器。
+然后运行下面这个命令，新建一个名为docker02的容器。
+1$ docker run -it --name docker02 --volumes-from docker01 lize/centos:1.0
+
+
+–volumes-from 就表示将docker01容器的数据卷同步到新建的这个容器中。
+
+若在docker01容器内对数据卷中的内容进行修改，那么这些修改就会同步到docker02容器的数据卷内。
+反过来，若在docker02容器内对数据卷中的内容进行修改，那么这些修改也会同步到docker01容器的数据卷内。
+即使将docker01容器彻底删除，docker02容器内的数据卷也会依旧存在。
+这个数据卷的同步机制是通过双向拷贝数据实现的，所以即使删除“父容器”后，“子容器”内的数据卷不会受影响。
+等到同步数据卷的容器全部停止后，这个同步的数据卷则被删除（本地持久化后的数据不会被删除）。
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/01/08/Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/" title="Docker匿名挂载和具名挂载">Docker匿名挂载和具名挂载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-01-07T16:00:00.000Z" title="Created 2021-01-08 00:00:00">2021-01-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Docker/">Docker</a></span></div><div class="content">总结：
+-v 容器内路径                         #匿名挂载
+-v 卷名:容器内路径                #具名挂载
+-v &#x2F;宿主机路径:容器内路径    #指定路径挂载
+
+使用数据卷挂载时通常要指定主机目录和容器内目录。
+而匿名挂载是不指定主机目录，让Docker在主机生成一个目录用来完成主机目录和容器目录之间的挂载。
+匿名挂载示例：-v 后面只用写容器内的目录
+1$ docker run -d -P --name nginx01 -v /etc/nginx nginx
+
+查看已挂载的卷：123456$ docker volume lsDRIVER    VOLUME NAMElocal     b3b5c49a7b70d051d7e6016315802e0e76e2fcf51c6f063154e6003ea4bacc64local     c2e4e840333c3822a97c72237aa193a5c86117814d3d650b784a4ebde775dafclocal     cout-test-vol
+
+具名挂载示例：-v后面的 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">realxz</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2022/04/04/hello-world/" title="Hello World">Hello World</a><time datetime="2022-04-04T12:44:51.070Z" title="Created 2022-04-04 20:44:51">2022-04-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/06/01/JVM%E6%9E%B6%E6%9E%84%E5%9B%BE/" title="JVM架构图">JVM架构图</a><time datetime="2021-06-01T08:57:50.000Z" title="Created 2021-06-01 16:57:50">2021-06-01</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/05/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/" title="数据库三大范式">数据库三大范式</a><time datetime="2021-05-29T07:05:32.000Z" title="Created 2021-05-29 15:05:32">2021-05-29</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/04/02/nginx+fdfs%E6%97%A0work%E8%BF%9B%E7%A8%8B/" title="nginx+fdfs无work进程">nginx+fdfs无work进程</a><time datetime="2021-04-02T14:00:00.000Z" title="Created 2021-04-02 22:00:00">2021-04-02</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2021/04/02/%E5%AE%89%E8%A3%85FastDFS/" title="安装FastDFS">安装FastDFS</a><time datetime="2021-04-02T07:44:14.000Z" title="Created 2021-04-02 15:44:14">2021-04-02</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CodeLite/"><span class="card-category-list-name">CodeLite</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Docker/"><span class="card-category-list-name">Docker</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/FastDFS/"><span class="card-category-list-name">FastDFS</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Nginx/"><span class="card-category-list-name">Nginx</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/vscode/"><span class="card-category-list-name">vscode</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/CodeLite/" style="font-size: 1.1em; color: #999">CodeLite</a> <a href="/tags/Docker/" style="font-size: 1.5em; color: #99a9bf">Docker</a> <a href="/tags/FastDFS/" style="font-size: 1.1em; color: #999">FastDFS</a> <a href="/tags/JVM/" style="font-size: 1.1em; color: #999">JVM</a> <a href="/tags/nginx/" style="font-size: 1.1em; color: #999">nginx</a> <a href="/tags/ubuntu/" style="font-size: 1.1em; color: #999">ubuntu</a> <a href="/tags/vscode/" style="font-size: 1.1em; color: #999">vscode</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: #999">数据库</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">April 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">May 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">April 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">January 2021</span><span class="card-archive-list-count">8</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">14</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-04-05T13:24:49.472Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By realxz</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
